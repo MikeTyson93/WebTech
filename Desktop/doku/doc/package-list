@@ -1,0 +1,10 @@
+de.htwg.se.ws1516.fourwinning
+de.htwg.se.ws1516.fourwinning.application
+de.htwg.se.ws1516.fourwinning.controller
+de.htwg.se.ws1516.fourwinning.controller.impl
+de.htwg.se.ws1516.fourwinning.models
+de.htwg.se.ws1516.fourwinning.view
+de.htwg.se.ws1516.fourwinning.view.GUI
+de.htwg.se.ws1516.fourwinning.view.TUI
+de.htwg.util
+de.htwg.util.observer
