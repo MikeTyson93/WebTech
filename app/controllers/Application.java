@@ -18,6 +18,7 @@ public class Application extends Controller {
 			Tui TextUI = FourWinning.getInstance().getTui();
 			TextUI.createGameArea();
 			TextUI.runGame();
+			
 			return ok(views.html.index.render(TextUI.toHtml()));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

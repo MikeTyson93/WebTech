@@ -1,0 +1,27 @@
+[debug] Forking tests - parallelism = false
+[debug] Create a single-thread test executor
+[debug] Runner for sbt.FrameworkWrapper produced 2 initial tasks for 2 tests.
+[debug]   Running TaskDef(IntegrationTest, sbt.ForkMain$AnnotatedFingerscan@4d7a0441, false, [SuiteSelector])
+[debug] Test run started
+[debug] Test IntegrationTest.test started
+[debug] Test IntegrationTest.test finished
+[debug] Test run finished: 0 failed, 0 ignored, 1 total, 9.862s
+[debug]     Produced 0 nested tasks and 1 events.
+[debug]   Running TaskDef(ApplicationTest, sbt.ForkMain$AnnotatedFingerscan@479d5f8, false, [SuiteSelector])
+[debug] Test run started
+[debug] Test ApplicationTest.simpleCheck started
+[debug] Test ApplicationTest.simpleCheck finished
+[debug] Test ApplicationTest.indexShouldContainTheCorrectString started
+[debug] Test ApplicationTest.indexShouldContainTheCorrectString finished
+[debug] Test ApplicationTest.indexTemplateShouldContainTheStringThatIsPassedToIt started
+[debug] Test ApplicationTest.indexTemplateShouldContainTheStringThatIsPassedToIt finished
+[debug] Test run finished: 0 failed, 0 ignored, 3 total, 0.391s
+[debug]     Produced 0 nested tasks and 3 events.
+[debug] Framework implementation 'org.specs2.runner.Specs2Framework' not present.
+[debug] Runner for sbt.FrameworkWrapper produced 0 initial tasks for 0 tests.
+[debug] Summary for JUnit not available.
+[debug] Summary for specs2 not available.
+[info] Passed: Total 4, Failed 0, Errors 0, Passed 4
+[debug] Passed tests:
+[debug] 	ApplicationTest
+[debug] 	IntegrationTest
