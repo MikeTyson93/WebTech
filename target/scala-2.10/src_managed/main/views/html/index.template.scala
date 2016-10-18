@@ -32,7 +32,7 @@ Seq[Any](format.raw/*1.19*/("""
 
     """),_display_(Seq[Any](/*5.6*/message)),format.raw/*5.13*/("""
     
-    <a href="/fourwinning"> play Four winning </a>
+    <a href="http://localhost:9000/fourwinning/"> play Four winning </a>
 
 """)))})))}
     }
@@ -46,9 +46,9 @@ Seq[Any](format.raw/*1.19*/("""
 }
                 /*
                     -- GENERATED --
-                    DATE: Fri Oct 14 13:34:28 CEST 2016
+                    DATE: Tue Oct 18 11:54:03 CEST 2016
                     SOURCE: C:/Users/Michi/Vier_gewinnt/app/views/index.scala.html
-                    HASH: 69881cdbb72672ac524c1277acd0d545d2bf2d45
+                    HASH: a2a45e1dafcf276b6f4844a77ad352271f1476b4
                     MATRIX: 774->1|885->18|922->21|961->52|1000->54|1041->61|1069->68
                     LINES: 26->1|29->1|31->3|31->3|31->3|33->5|33->5
                     -- GENERATED --

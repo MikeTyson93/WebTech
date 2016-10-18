@@ -11,5 +11,3 @@ libraryDependencies ++= Seq(
 
 playJavaSettings
 
-
-//fork in run := true
