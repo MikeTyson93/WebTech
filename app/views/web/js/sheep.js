@@ -6,14 +6,16 @@ function start() {
     var scale = 20;     // in percent
     var jumpHeight = 50;
 
-    setInterval(spawn, 1000);
+    //setInterval(spawn, 1000);
 
     setInterval(function() {
+        /*
         var sheeps = document.getElementsByClassName(sheep);
 
         console.log(sheeps);
 
         return;
+        */
         var sheep = document.getElementById("sheep");
 
         var dy = -Math.abs(Math.sin(x / 20)) * jumpHeight;
@@ -22,10 +24,10 @@ function start() {
         sheep.style.left = x+'px';
         sheep.style.top = y+dy+'px';
         sheep.style.width = scale+dy/60+'%';
-        sheep.style.height = scale+dy/20+'%';
+        sheep.style.height = scale-dy/20+'%';
 
         x--;
-    }, 2220);
+    }, 20);
     //document.getElementsByClassName(klass)
 }
 
