@@ -1,2 +1,1 @@
-[error] C:\Users\Michi\Vier_gewinnt\app\views\index.scala.html:0: index is already defined as object index
-[error] one error found
+[error] C:\Users\Michi\Vier_gewinnt\conf\routes:  error: class, interface, or enum expected
