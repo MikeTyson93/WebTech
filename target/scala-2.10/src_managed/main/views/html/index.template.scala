@@ -69,7 +69,6 @@ Jeder Spieler besitzt 21 gleichfarbige Spielsteine. Wenn ein Spieler einen Spiel
 besetzt dieser den untersten freien Platz der Spalte. Gewinner ist der Spieler, der es als erster schafft, <br></br>
 vier oder mehr seiner Spielsteine waagerecht, senkrecht oder diagonal in eine Linie zu bringen. <br></br>
 Das Spiel endet unentschieden, wenn das Spielbrett komplett gef�llt ist, ohne dass ein Spieler eine Viererlinie gebildet hat.
-        ...
     </div>
 
 </div>
@@ -103,9 +102,9 @@ Das Spiel endet unentschieden, wenn das Spielbrett komplett gef�llt ist, ohne 
 }
                 /*
                     -- GENERATED --
-                    DATE: Wed Oct 19 13:43:44 CEST 2016
+                    DATE: Wed Oct 19 14:47:38 CEST 2016
                     SOURCE: C:/Users/Michi/Vier_gewinnt/app/views/index.scala.html
-                    HASH: a480432fba6e4ea0bc4727ca2757e8bde9da7aa7
+                    HASH: 6d80dc6004b8e0802353429e10496c99a08cf3cc
                     MATRIX: 774->1|885->18|924->23|963->54|1002->56|1045->65|1073->72
                     LINES: 26->1|29->1|31->3|31->3|31->3|33->5|33->5
                     -- GENERATED --
