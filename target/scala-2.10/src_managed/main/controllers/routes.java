@@ -1,6 +1,6 @@
 // @SOURCE:C:/Users/Michi/Vier_gewinnt/conf/routes
-// @HASH:f5d5a868112cc377daad65ba77178f7bc43a7532
-// @DATE:Wed Oct 19 10:12:20 CEST 2016
+// @HASH:2353104fe076c238333de49ec847e56f097566d4
+// @DATE:Wed Oct 19 11:40:26 CEST 2016
 
 package controllers;
 

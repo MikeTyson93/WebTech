@@ -1,6 +1,6 @@
 // @SOURCE:C:/Users/Michi/Vier_gewinnt/conf/routes
-// @HASH:f5d5a868112cc377daad65ba77178f7bc43a7532
-// @DATE:Wed Oct 19 10:12:20 CEST 2016
+// @HASH:2353104fe076c238333de49ec847e56f097566d4
+// @DATE:Wed Oct 19 11:40:26 CEST 2016
 
 
 import play.core._
@@ -43,7 +43,11 @@ private[this] lazy val controllers_WebJarAssets_at2 = Route("GET", PathPattern(L
 // @LINE:10
 private[this] lazy val controllers_Application_fourwinning3 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("fourwinning/"))))
         
-def documentation = List(("""GET""", prefix,"""controllers.Application.index()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """assets/$file<.+>""","""controllers.Assets.at(path:String = "/public", file:String)"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """webjars/$file<.+>""","""controllers.WebJarAssets.at(file:String)"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """fourwinning/""","""controllers.Application.fourwinning()""")).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
+
+// @LINE:11
+private[this] lazy val controllers_Application_playfourwinning4 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("fourwinning/"),DynamicPart("command", """[^/]+""",true))))
+        
+def documentation = List(("""GET""", prefix,"""controllers.Application.index()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """assets/$file<.+>""","""controllers.Assets.at(path:String = "/public", file:String)"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """webjars/$file<.+>""","""controllers.WebJarAssets.at(file:String)"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """fourwinning/""","""controllers.Application.fourwinning()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """fourwinning/$command<[^/]+>""","""controllers.Application.playfourwinning(command:String)""")).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
   case r @ (_,_,_) => s :+ r.asInstanceOf[(String,String,String)]
   case l => s ++ l.asInstanceOf[List[(String,String,String)]] 
 }}
@@ -79,6 +83,14 @@ case controllers_WebJarAssets_at2(params) => {
 case controllers_Application_fourwinning3(params) => {
    call { 
         invokeHandler(controllers.Application.fourwinning(), HandlerDef(this, "controllers.Application", "fourwinning", Nil,"GET", """""", Routes.prefix + """fourwinning/"""))
+   }
+}
+        
+
+// @LINE:11
+case controllers_Application_playfourwinning4(params) => {
+   call(params.fromPath[String]("command", None)) { (command) =>
+        invokeHandler(controllers.Application.playfourwinning(command), HandlerDef(this, "controllers.Application", "playfourwinning", Seq(classOf[String]),"GET", """""", Routes.prefix + """fourwinning/$command<[^/]+>"""))
    }
 }
         

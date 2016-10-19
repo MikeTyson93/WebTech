@@ -29,6 +29,13 @@ object fourwinning extends BaseScalaTemplate[play.api.templates.HtmlFormat.Appen
 Seq[Any](format.raw/*1.16*/("""
 """),_display_(Seq[Any](/*2.2*/main("Welcome to Four Winning")/*2.33*/{_display_(Seq[Any](format.raw/*2.34*/("""
 	"""),_display_(Seq[Any](/*3.3*/Html(game))),format.raw/*3.13*/("""
+	
+	 <div id="footer">
+
+        <a href="http://localhost:9000/"> Zur�ck zur Anleitung</a>
+
+    </div>
+
 """)))})))}
     }
     
@@ -41,9 +48,9 @@ Seq[Any](format.raw/*1.16*/("""
 }
                 /*
                     -- GENERATED --
-                    DATE: Tue Oct 18 12:12:30 CEST 2016
+                    DATE: Wed Oct 19 11:11:49 CEST 2016
                     SOURCE: C:/Users/Michi/Vier_gewinnt/app/views/fourwinning.scala.html
-                    HASH: acbe80a11a64b524b660d646eecf7ac68b0547ff
+                    HASH: 168c15ebd89e76975ea1355e6d1a97b20e25e05f
                     MATRIX: 780->1|888->15|925->18|964->49|1002->50|1040->54|1071->64
                     LINES: 26->1|29->1|30->2|30->2|30->2|31->3|31->3
                     -- GENERATED --

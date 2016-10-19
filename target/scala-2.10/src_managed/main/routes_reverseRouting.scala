@@ -1,6 +1,6 @@
 // @SOURCE:C:/Users/Michi/Vier_gewinnt/conf/routes
-// @HASH:f5d5a868112cc377daad65ba77178f7bc43a7532
-// @DATE:Wed Oct 19 10:12:20 CEST 2016
+// @HASH:2353104fe076c238333de49ec847e56f097566d4
+// @DATE:Wed Oct 19 11:40:26 CEST 2016
 
 import Routes.{prefix => _prefix, defaultPrefix => _defaultPrefix}
 import play.core._
@@ -13,6 +13,7 @@ import play.libs.F
 import Router.queryString
 
 
+// @LINE:11
 // @LINE:10
 // @LINE:9
 // @LINE:8
@@ -45,6 +46,7 @@ def at(file:String): Call = {
 }
                           
 
+// @LINE:11
 // @LINE:10
 // @LINE:5
 class ReverseApplication {
@@ -61,6 +63,12 @@ def fourwinning(): Call = {
    Call("GET", _prefix + { _defaultPrefix } + "fourwinning/")
 }
                                                 
+
+// @LINE:11
+def playfourwinning(command:String): Call = {
+   Call("GET", _prefix + { _defaultPrefix } + "fourwinning/" + implicitly[PathBindable[String]].unbind("command", dynamicString(command)))
+}
+                                                
     
 }
                           
@@ -68,6 +76,7 @@ def fourwinning(): Call = {
                   
 
 
+// @LINE:11
 // @LINE:10
 // @LINE:9
 // @LINE:8
@@ -110,6 +119,7 @@ def at : JavascriptReverseRoute = JavascriptReverseRoute(
 }
               
 
+// @LINE:11
 // @LINE:10
 // @LINE:5
 class ReverseApplication {
@@ -136,6 +146,17 @@ def fourwinning : JavascriptReverseRoute = JavascriptReverseRoute(
    """
 )
                         
+
+// @LINE:11
+def playfourwinning : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.Application.playfourwinning",
+   """
+      function(command) {
+      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "fourwinning/" + (""" + implicitly[PathBindable[String]].javascriptUnbind + """)("command", encodeURIComponent(command))})
+      }
+   """
+)
+                        
     
 }
               
@@ -143,6 +164,7 @@ def fourwinning : JavascriptReverseRoute = JavascriptReverseRoute(
         
 
 
+// @LINE:11
 // @LINE:10
 // @LINE:9
 // @LINE:8
@@ -176,6 +198,7 @@ def at(path:String, file:String): play.api.mvc.HandlerRef[_] = new play.api.mvc.
 }
                           
 
+// @LINE:11
 // @LINE:10
 // @LINE:5
 class ReverseApplication {
@@ -190,6 +213,12 @@ def index(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
 // @LINE:10
 def fourwinning(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
    controllers.Application.fourwinning(), HandlerDef(this, "controllers.Application", "fourwinning", Seq(), "GET", """""", _prefix + """fourwinning/""")
+)
+                      
+
+// @LINE:11
+def playfourwinning(command:String): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.Application.playfourwinning(command), HandlerDef(this, "controllers.Application", "playfourwinning", Seq(classOf[String]), "GET", """""", _prefix + """fourwinning/$command<[^/]+>""")
 )
                       
     
