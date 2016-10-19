@@ -99,9 +99,15 @@ Seq[Any](format.raw/*1.19*/("""
 }
                 /*
                     -- GENERATED --
+<<<<<<< HEAD
+                    DATE: Wed Oct 19 10:36:18 CEST 2016
+                    SOURCE: C:/Users/Michi/Vier_gewinnt/app/views/index.scala.html
+                    HASH: 74b3ceefcf7a6d727e9ada8921d98c054db9f5b7
+=======
                     DATE: Wed Oct 19 10:33:03 CEST 2016
                     SOURCE: C:/Users/Michi/Vier_gewinnt/app/views/index.scala.html
                     HASH: 69b069f71305c012cc8e428dfe39293b858f2681
+>>>>>>> develop
                     MATRIX: 774->1|885->18|924->23|963->54|1002->56|1045->65|1073->72
                     LINES: 26->1|29->1|31->3|31->3|31->3|33->5|33->5
                     -- GENERATED --
