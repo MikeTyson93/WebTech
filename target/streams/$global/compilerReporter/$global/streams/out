@@ -1,1 +1,3 @@
-[error] C:\Users\Michi\Vier_gewinnt\conf\routes:  error: class, interface, or enum expected
+[error] C:\Users\Michi\Vier_gewinnt\app\controllers\Application.java:34:  error: method runGame in class Tui cannot be applied to given types;
+[error] 			TextUI.runGame(command);
+[error] 			      ^
