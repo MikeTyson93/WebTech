@@ -17,9 +17,23 @@ public class Application extends Controller {
     	try {
 			Tui TextUI = FourWinning.getInstance().getTui();
 			TextUI.createGameArea();
-			TextUI.runGame();
+			TextUI.createPlayers();
 			
-			return ok(views.html.index.render(TextUI.toHtml()));
+			
+			return ok(views.html.fourwinning.render(TextUI.toHtml()));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+    }
+    
+    public static Result playfourwinning(String command) {
+    	try {
+			Tui TextUI = FourWinning.getInstance().getTui();
+			TextUI.runGame(command);
+			
+			return ok(views.html.fourwinning.render(TextUI.toHtml()));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
