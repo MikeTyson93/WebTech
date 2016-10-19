@@ -38,9 +38,11 @@ Seq[Any](format.raw/*1.19*/("""
 
 <head>
 
-    <title>Sticky Header and Footer</title>
+    <title>Vier Gewinnt mit Schafen!</title>
 
     <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <script type="text/javascript" charset="utf-8" src="js/main.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/util.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/sheep.js"></script>
 
 </head>
@@ -61,10 +63,12 @@ Seq[Any](format.raw/*1.19*/("""
 <div id="container">
 
     <div id="content">
-
-            content
-        <br /><br />
-            blah blah blah..
+Das Spiel wird auf einem senkrecht stehenden hohlen Spielbrett gespielt, in das die Spieler abwechselnd ihre Spielsteine<br></br> 
+fallen lassen. Das Spielbrett besteht aus sieben Spalten (senkrecht) und sechs Reihen (waagerecht). <br></br>
+Jeder Spieler besitzt 21 gleichfarbige Spielsteine. Wenn ein Spieler einen Spielstein in eine Spalte fallen l�sst, <br></br>
+besetzt dieser den untersten freien Platz der Spalte. Gewinner ist der Spieler, der es als erster schafft, <br></br>
+vier oder mehr seiner Spielsteine waagerecht, senkrecht oder diagonal in eine Linie zu bringen. <br></br>
+Das Spiel endet unentschieden, wenn das Spielbrett komplett gef�llt ist, ohne dass ein Spieler eine Viererlinie gebildet hat.
         ...
     </div>
 
@@ -99,15 +103,9 @@ Seq[Any](format.raw/*1.19*/("""
 }
                 /*
                     -- GENERATED --
-<<<<<<< HEAD
-                    DATE: Wed Oct 19 10:36:18 CEST 2016
+                    DATE: Wed Oct 19 13:43:44 CEST 2016
                     SOURCE: C:/Users/Michi/Vier_gewinnt/app/views/index.scala.html
-                    HASH: 74b3ceefcf7a6d727e9ada8921d98c054db9f5b7
-=======
-                    DATE: Wed Oct 19 10:33:03 CEST 2016
-                    SOURCE: C:/Users/Michi/Vier_gewinnt/app/views/index.scala.html
-                    HASH: 69b069f71305c012cc8e428dfe39293b858f2681
->>>>>>> develop
+                    HASH: a480432fba6e4ea0bc4727ca2757e8bde9da7aa7
                     MATRIX: 774->1|885->18|924->23|963->54|1002->56|1045->65|1073->72
                     LINES: 26->1|29->1|31->3|31->3|31->3|33->5|33->5
                     -- GENERATED --
