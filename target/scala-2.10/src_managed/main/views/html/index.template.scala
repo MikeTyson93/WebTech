@@ -46,10 +46,10 @@ Seq[Any](format.raw/*1.19*/("""
 }
                 /*
                     -- GENERATED --
-                    DATE: Fri Oct 14 13:34:28 CEST 2016
+                    DATE: Wed Oct 19 10:36:18 CEST 2016
                     SOURCE: C:/Users/Michi/Vier_gewinnt/app/views/index.scala.html
-                    HASH: 69881cdbb72672ac524c1277acd0d545d2bf2d45
-                    MATRIX: 774->1|885->18|922->21|961->52|1000->54|1041->61|1069->68
+                    HASH: 74b3ceefcf7a6d727e9ada8921d98c054db9f5b7
+                    MATRIX: 774->1|885->18|924->23|963->54|1002->56|1045->65|1073->72
                     LINES: 26->1|29->1|31->3|31->3|31->3|33->5|33->5
                     -- GENERATED --
                 */

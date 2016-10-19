@@ -1,6 +1,6 @@
 // @SOURCE:C:/Users/Michi/Vier_gewinnt/conf/routes
-// @HASH:faf7d4c43484b4c2054ef00fe3f5144e37829bcf
-// @DATE:Fri Oct 14 13:16:06 CEST 2016
+// @HASH:490ecc5c43cef7e8b2213d01eccf8cea66a3aab1
+// @DATE:Wed Oct 19 10:36:18 CEST 2016
 
 import Routes.{prefix => _prefix, defaultPrefix => _defaultPrefix}
 import play.core._
