@@ -1,3 +1,3 @@
-[error] C:\Users\Michi\Vier_gewinnt\app\controllers\Application.java:19:  error: spiel is not public in Tui; cannot be accessed from outside package
-[error] 			TextUI.spiel.baueSpielfeld(8, 8);
-[error] 			      ^
+[error] C:\Users\Michi\Vier_gewinnt\app\controllers\Application.java:13:  error: method render in class index cannot be applied to given types;
+[error]         return ok(views.html.index.render("Hello Play Framework"));
+[error]                                   ^

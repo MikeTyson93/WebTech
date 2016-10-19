@@ -31,9 +31,62 @@ Seq[Any](format.raw/*1.19*/("""
 """),_display_(Seq[Any](/*3.2*/main("Welcome to Four Winning")/*3.33*/ {_display_(Seq[Any](format.raw/*3.35*/("""
 
     """),_display_(Seq[Any](/*5.6*/message)),format.raw/*5.13*/("""
-    
-    <a href="http://localhost:9000/fourwinning/"> play Four winning </a>
 
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>Sticky Header and Footer</title>
+
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <script type="text/javascript" charset="utf-8" src="js/sheep.js"></script>
+
+</head>
+
+<body onload="start()">
+
+<!-- BEGIN: Sticky Header -->
+<div id="header_container">
+
+    <div id="header">
+        Vier Gewinnt
+    </div>
+
+</div>
+<!-- END: Sticky Header -->
+
+<!-- BEGIN: Page Content -->
+<div id="container">
+
+    <div id="content">
+
+            content
+        <br /><br />
+            blah blah blah..
+        ...
+    </div>
+
+</div>
+<!-- END: Page Content -->
+
+<!-- BEGIN: Sticky Footer -->
+<div id="footer_container">
+
+    <div id="footer">
+
+        <a href="http://localhost:9000/fourwinning/"> Link zum Spiel</a>
+
+    </div>
+
+</div>
+
+<!-- END: Sticky Footer -->
+
+</body>
+
+</html>
 """)))})))}
     }
     
@@ -46,10 +99,10 @@ Seq[Any](format.raw/*1.19*/("""
 }
                 /*
                     -- GENERATED --
-                    DATE: Tue Oct 18 11:54:03 CEST 2016
+                    DATE: Wed Oct 19 10:33:03 CEST 2016
                     SOURCE: C:/Users/Michi/Vier_gewinnt/app/views/index.scala.html
-                    HASH: a2a45e1dafcf276b6f4844a77ad352271f1476b4
-                    MATRIX: 774->1|885->18|922->21|961->52|1000->54|1041->61|1069->68
+                    HASH: 69b069f71305c012cc8e428dfe39293b858f2681
+                    MATRIX: 774->1|885->18|924->23|963->54|1002->56|1045->65|1073->72
                     LINES: 26->1|29->1|31->3|31->3|31->3|33->5|33->5
                     -- GENERATED --
                 */
