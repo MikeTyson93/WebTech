@@ -28,7 +28,11 @@ object fourwinning extends BaseScalaTemplate[play.api.templates.HtmlFormat.Appen
 
 Seq[Any](format.raw/*1.16*/("""
 """),_display_(Seq[Any](/*2.2*/main("Welcome to Four Winning")/*2.33*/{_display_(Seq[Any](format.raw/*2.34*/("""
+<<<<<<< HEAD
 	<code>"""),_display_(Seq[Any](/*3.9*/Html(game))),format.raw/*3.19*/("""</code>
+=======
+	"""),_display_(Seq[Any](/*3.3*/Html(game))),format.raw/*3.13*/("""
+>>>>>>> develop
 """)))})))}
     }
     
@@ -41,10 +45,17 @@ Seq[Any](format.raw/*1.16*/("""
 }
                 /*
                     -- GENERATED --
+<<<<<<< HEAD
                     DATE: Wed Oct 19 10:36:18 CEST 2016
                     SOURCE: C:/Users/Michi/Vier_gewinnt/app/views/fourwinning.scala.html
                     HASH: 245b1a79279b519ce0bedadc67925f24a1b1d968
                     MATRIX: 780->1|888->15|925->18|964->49|1002->50|1046->60|1077->70
+=======
+                    DATE: Tue Oct 18 12:12:30 CEST 2016
+                    SOURCE: C:/Users/Michi/Vier_gewinnt/app/views/fourwinning.scala.html
+                    HASH: acbe80a11a64b524b660d646eecf7ac68b0547ff
+                    MATRIX: 780->1|888->15|925->18|964->49|1002->50|1040->54|1071->64
+>>>>>>> develop
                     LINES: 26->1|29->1|30->2|30->2|30->2|31->3|31->3
                     -- GENERATED --
                 */

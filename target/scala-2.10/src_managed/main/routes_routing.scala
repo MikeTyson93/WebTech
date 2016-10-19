@@ -1,6 +1,6 @@
 // @SOURCE:C:/Users/Michi/Vier_gewinnt/conf/routes
-// @HASH:490ecc5c43cef7e8b2213d01eccf8cea66a3aab1
-// @DATE:Wed Oct 19 10:36:18 CEST 2016
+// @HASH:f5d5a868112cc377daad65ba77178f7bc43a7532
+// @DATE:Wed Oct 19 10:37:54 CEST 2016
 
 
 import play.core._
@@ -41,9 +41,9 @@ private[this] lazy val controllers_WebJarAssets_at2 = Route("GET", PathPattern(L
         
 
 // @LINE:10
-private[this] lazy val controllers_Application_fourwinning3 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("fourwinning"))))
+private[this] lazy val controllers_Application_fourwinning3 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("fourwinning/"))))
         
-def documentation = List(("""GET""", prefix,"""controllers.Application.index()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """assets/$file<.+>""","""controllers.Assets.at(path:String = "/public", file:String)"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """webjars/$file<.+>""","""controllers.WebJarAssets.at(file:String)"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """fourwinning""","""controllers.Application.fourwinning()""")).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
+def documentation = List(("""GET""", prefix,"""controllers.Application.index()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """assets/$file<.+>""","""controllers.Assets.at(path:String = "/public", file:String)"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """webjars/$file<.+>""","""controllers.WebJarAssets.at(file:String)"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """fourwinning/""","""controllers.Application.fourwinning()""")).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
   case r @ (_,_,_) => s :+ r.asInstanceOf[(String,String,String)]
   case l => s ++ l.asInstanceOf[List[(String,String,String)]] 
 }}
@@ -78,7 +78,7 @@ case controllers_WebJarAssets_at2(params) => {
 // @LINE:10
 case controllers_Application_fourwinning3(params) => {
    call { 
-        invokeHandler(controllers.Application.fourwinning(), HandlerDef(this, "controllers.Application", "fourwinning", Nil,"GET", """""", Routes.prefix + """fourwinning"""))
+        invokeHandler(controllers.Application.fourwinning(), HandlerDef(this, "controllers.Application", "fourwinning", Nil,"GET", """""", Routes.prefix + """fourwinning/"""))
    }
 }
         

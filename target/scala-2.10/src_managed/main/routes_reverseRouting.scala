@@ -1,6 +1,6 @@
 // @SOURCE:C:/Users/Michi/Vier_gewinnt/conf/routes
-// @HASH:490ecc5c43cef7e8b2213d01eccf8cea66a3aab1
-// @DATE:Wed Oct 19 10:36:18 CEST 2016
+// @HASH:f5d5a868112cc377daad65ba77178f7bc43a7532
+// @DATE:Wed Oct 19 10:37:54 CEST 2016
 
 import Routes.{prefix => _prefix, defaultPrefix => _defaultPrefix}
 import play.core._
@@ -58,7 +58,7 @@ def index(): Call = {
 
 // @LINE:10
 def fourwinning(): Call = {
-   Call("GET", _prefix + { _defaultPrefix } + "fourwinning")
+   Call("GET", _prefix + { _defaultPrefix } + "fourwinning/")
 }
                                                 
     
@@ -131,7 +131,7 @@ def fourwinning : JavascriptReverseRoute = JavascriptReverseRoute(
    "controllers.Application.fourwinning",
    """
       function() {
-      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "fourwinning"})
+      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "fourwinning/"})
       }
    """
 )
@@ -189,7 +189,7 @@ def index(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
 
 // @LINE:10
 def fourwinning(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
-   controllers.Application.fourwinning(), HandlerDef(this, "controllers.Application", "fourwinning", Seq(), "GET", """""", _prefix + """fourwinning""")
+   controllers.Application.fourwinning(), HandlerDef(this, "controllers.Application", "fourwinning", Seq(), "GET", """""", _prefix + """fourwinning/""")
 )
                       
     
