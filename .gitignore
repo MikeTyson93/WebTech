@@ -12,11 +12,8 @@ target
 *.log
 
 # IntelliJ
-*.iml
 *.ipr
 *.iws
-.idea
-out
 
 # Vim
 tags
@@ -25,8 +22,6 @@ tags
 
 # Eclipse
 build
-.classpath
-.project
 .settings
 org.scala-ide.sdt.core/META-INF/MANIFEST.MF
 org.scala-ide.sdt.update-site/site.xml`
@@ -39,7 +34,6 @@ org.scala-ide.sdt.update-site/site.xml`
 .history/
 .lib/
 dist/*
-target/
 lib_managed/
 src_managed/
 project/boot/
@@ -52,7 +46,6 @@ project/plugins/project/
 .history
 lib/*.tmp
 logs/
-project/.sbtserver
 .sbtserver
 
 
@@ -62,15 +55,11 @@ project/.sbtserver
 
 # desperate sacrifices to the almighty goddess of random
 project/
-.settings/
 RUNNING_PID
 bin/
 /db
 /lib/
-/logs/
 /modules
-/project/target
-/target
 tmp/
 test-result
 server.pid
