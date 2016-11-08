@@ -40,4 +40,13 @@ public class Application extends Controller {
 			return null;
 		}
     }
+    
+    public static Result strategie(){
+        return ok(views.html.strategie.render("Strategie"));
+    
+    }
+    
+    public static Result contact(){
+        return ok(views.html.contact.render("Kontakte"));
+    }
 }

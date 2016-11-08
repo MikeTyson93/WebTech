@@ -1,0 +1,109 @@
+@(message: String)
+
+@main("Welcome to Four Winning") {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Vier Gewinnt</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" 
+                       href='@routes.Assets.at("stylesheets/style.css")'>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Connect 4</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a href="http://localhost:9000/">Home</a></li>
+        <li class="active"><a href="http://localhost:9000/strategie/">Strategie und Taktik</a></li>
+        <li><a href="http://localhost:9000/fourwinning/">Vier gewinnt</a></li>
+        <li><a href="http://localhost:9000/contact/">Kontakt</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid text-center">
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+      <p><img id="htwg" src="@routes.Assets.at("images/htwg-logo.jpg")" class="logo"/></p>
+    </div>
+    <div class="col-sm-8 text-left">
+      <h1>Strategie und Taktik</h1>
+      <p>Anfänger übersehen oft einfache Bedrohungen des Gegners, Viererlinien zu vervollständigen, deshalb ist es wichtig, alle vertikalen, 
+        horizontalen und diagonalen Linien im Auge zu behalten. Fortgeschrittene Spieler versuchen zu gewinnen, indem sie zwei Bedrohungen gleichzeitig 
+        aufbauen (Gabel; Zwickmühle). Als Faustregel gilt, dass Spielsteine in der Mitte des Spielbretts mehr Wert haben als Spielsteine am Rand des Spielbretts, 
+        da es für sie mehr Möglichkeiten gibt, an Viererlinien beteiligt zu sein (und somit auch die Möglichkeiten des Gegners einschränkt). Gute Spieler versuchen,
+        kurzfristig drei Spielsteine in eine Linie zu bringen und gleichzeitig den Gegner daran zu hindern, in eine bestimmte Spalte zu setzen. 
+        Zum Ende hin verwandelt sich das Spiel oft zu einem komplexen Auszählspiel; beide Spieler versuchen zu gewinnen, indem sie versuchen, 
+        den Gegner dazu zu veranlassen, in eine bestimmte Spalte zu setzen. In dieser Situation ist es hilfreich, daran zu denken, dass, wenn man selbst am Zug ist, 
+        immer eine gradzahlige Anzahl von Spielsteinen gesetzt wird, bis man selbst wieder am Zug ist.<br></br>
+
+        Die Strategien des ersten und zweiten Spielers unterscheiden sich deutlich. Alle Dreierlinien einer Farbe erzeugen ein Loch: ein Feld, 
+        das, von dem entsprechenden Spieler bedient, zum Sieg führt. <br></br>
+
+        Ein Loch wird als gerade oder ungerade bezeichnet, je nachdem, in welcher Reihe es sich befindet (die unterste Reihe wird als "eins" nummeriert).
+        Damit der erste Spieler gewinnen kann, muss er mehr ungerade Löcher aufgebaut haben als sein Gegner, die geraden Löcher spielen dabei keine Rolle. 
+        Damit der zweite Spieler gewinnen kann, muss er mindestens zwei ungerade Löcher mehr haben als sein Gegner, oder die gleiche Anzahl ungerader Löcher
+        und wenigstens ein gerades Loch. Diese Regeln sind vereinfacht dargestellt, denn wenn mehrere Löcher in der gleichen Spalte liegen wird es komplizierter.
+        Löcher, die direkt über Löchern des Gegners liegen, sind meistens nutzlos..
+        <br></br>Quelle: <a href="http://de.wikipedia.org/wiki/Vier_Gewinnt" >Wikipedia</a> <br></br>
+       
+      </p>
+   
+    
+        <h3>Hier ein paar Tipps und Tricks welche Sie vielleicht gebrauchen können.</h3>
+        
+        <div class="center">
+        <p>
+       <br></br><iframe width="560" height="315" align="middle" src="https://www.youtube.com/embed/0kOWNuKDqtA" frameborder="0" allowfullscreen></iframe>
+        </p>
+        </div>
+    </div>
+    <div class="col-sm-2 sidenav">
+      <a style="display:block" href="http://theater.htwg-konstanz.de/2016/update-strasser-jetzt-noch-besser/">
+      <div class="well">
+        <p><img id="strasser" src="@routes.Assets.at("images/strasser.jpg")" /></p>
+      </div>
+      </a>
+      <div class="well">
+        <p>Hier könnte Ihre Werbung stehen!</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="container-fluid text-center">
+  <p>Footer Text</p>
+</footer>
+
+</body>
+</html>
+
+}

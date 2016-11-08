@@ -1,6 +1,6 @@
-@(game: String)
-@main("Welcome to Four Winning"){
-<!DOCTYPE html>
+@(message: String)
+
+@main("Welcome to Four Winning") {
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,20 +42,26 @@
       <ul class="nav navbar-nav">
         <li><a href="http://localhost:9000/">Home</a></li>
         <li><a href="http://localhost:9000/strategie/">Strategie und Taktik</a></li>
-        <li class="active"><a href="http://localhost:9000/fourwinning/">Vier gewinnt</a></li>
-        <li><a href="http://localhost:9000/contact/">Kontakt</a></li>
+        <li><a href="http://localhost:9000/fourwinning/">Vier gewinnt</a></li>
+        <li class="active"><a href="http://localhost:9000/contact/">Kontakt</a></li>
       </ul>
     </div>
   </div>
 </nav>
+
 <div class="container-fluid text-center">
   <div class="row content">
     <div class="col-sm-2 sidenav">
-      <p><img id="htwg" src="@routes.Assets.at("images/htwg-logo.jpg")" class="logo"/></p>
+      <p><img id="htwg" src="@routes.Assets.at("images/htwg-logo.jpg")" class="logo" /></p>
     </div>
-    <div class="col-sm-8 text-middle">
-      <h1>Das Spiel</h1>
-      <p>	@Html(game)
+    <div class="col-sm-8 text-left">
+      <h1>Kontakt</h1>
+      <p>Haben Sie Fragen oder Anmerkungen zu diesem Spiel oder gegebenfalls zu der Implementierung? <br></br>
+      Konstruktives Feedback ist jederzeit erwünscht und benötigt!
+      </p>
+      <h3>Kontaktpersonen</h3>
+      <p>
+      Werden noch geboren.
       </p>
     </div>
     <div class="col-sm-2 sidenav">
@@ -70,6 +76,12 @@
     </div>
   </div>
 </div>
-	
+
+<footer class="container-fluid text-center">
+  <p>Footer Text</p>
+</footer>
+
 </body>
+</html>
+
 }

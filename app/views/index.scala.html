@@ -1,65 +1,100 @@
 @(message: String)
 
 @main("Welcome to Four Winning") {
-
-    @message
-
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
-
-    <title>Vier Gewinnt mit Schafen!</title>
-
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
-    <script type="text/javascript" charset="utf-8" src="js/main.js"></script>
-    <script type="text/javascript" charset="utf-8" src="js/util.js"></script>
-    <script type="text/javascript" charset="utf-8" src="js/sheep.js"></script>
-
+  <title>Vier Gewinnt</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" 
+                       href='@routes.Assets.at("stylesheets/style.css")'>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+  </style>
 </head>
+<body>
 
-<body onload="start()">
-
-<!-- BEGIN: Sticky Header -->
-<div id="header_container">
-
-    <div id="header">
-        Vier Gewinnt
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Connect 4</a>
     </div>
-
-</div>
-<!-- END: Sticky Header -->
-
-<!-- BEGIN: Page Content -->
-<div id="container">
-
-    <div id="content">
-Das Spiel wird auf einem senkrecht stehenden hohlen Spielbrett gespielt, in das die Spieler abwechselnd ihre Spielsteine<br></br> 
-fallen lassen. Das Spielbrett besteht aus sieben Spalten (senkrecht) und sechs Reihen (waagerecht). <br></br>
-Jeder Spieler besitzt 21 gleichfarbige Spielsteine. Wenn ein Spieler einen Spielstein in eine Spalte fallen l‰sst, <br></br>
-besetzt dieser den untersten freien Platz der Spalte. Gewinner ist der Spieler, der es als erster schafft, <br></br>
-vier oder mehr seiner Spielsteine waagerecht, senkrecht oder diagonal in eine Linie zu bringen. <br></br>
-Das Spiel endet unentschieden, wenn das Spielbrett komplett gef¸llt ist, ohne dass ein Spieler eine Viererlinie gebildet hat.
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="http://localhost:9000/strategie/">Strategie und Taktik</a></li>
+        <li><a href="http://localhost:9000/fourwinning/">Vier gewinnt</a></li>
+        <li><a href="http://localhost:9000/contact/">Kontakt</a></li>
+      </ul>
     </div>
+  </div>
+</nav>
 
-</div>
-<!-- END: Page Content -->
-
-<!-- BEGIN: Sticky Footer -->
-<div id="footer_container">
-
-    <div id="footer">
-
-        <a href="http://localhost:9000/fourwinning/"> Link zum Spiel</a>
-
+<div class="container-fluid text-center">
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+      <p><img id="htwg" src="@routes.Assets.at("images/htwg-logo.jpg")" class="logo"/></p>
     </div>
-
+    <div class="col-sm-8 text-left">
+      <h1>Vier Gewinnt</h1>
+      <p>Spielen Sie jetzt den absoluten Klassiker unter den Denkern.<br></br> 
+      </p>
+      <hr>
+      <h3>Beschreibung</h3>
+      <p>
+            Das klassische Brettspiel wird auf einem senkrecht stehenden hohlen Spielbrett gespielt, in das die Spieler abwechselnd ihre Spielsteine fallen lassen. 
+            Das Spielbrett besteht Spalten (Senkrecht) und Reihen (Waagrecht). 
+            Wenn ein Spieler einen Spielstein in eine Spalte fallen l√§sst, besetzt dieser den untersten freien Platz der Spalte.
+            Gewinner ist der Spieler, der es als erster schafft, vier seiner Spielsteine waagerecht, senkrecht oder diagonal in eine Linie zu bringen. 
+            Das Spiel endet unentschieden, wenn das Spielbrett komplett gef√ºllt ist, ohne dass ein Spieler gewonnen hat.
+            <br></br>Quelle: <a href="http://de.wikipedia.org/wiki/Vier_Gewinnt" >Wikipedia</a>
+                
+      </p>
+        <h3>Vorsicht, hoher Frustrationsfaktor!</h3>
+        <div class="center">
+        <p>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/Mr-eJ_x_MW0" frameborder="0" allowfullscreen></iframe><br></br>
+        </p>
+        </div>
+    </div>
+    <div class="col-sm-2 sidenav">
+      <a style="display:block" href="http://theater.htwg-konstanz.de/2016/update-strasser-jetzt-noch-besser/">
+      <div class="well">
+        <p><img id="strasser" src="@routes.Assets.at("images/strasser.jpg")" /></p>
+      </div>
+      </a>
+      <div class="well">
+        <p>Hier k√∂nnte Ihre Werbung stehen!</p>
+      </div>
+    </div>
+  </div>
 </div>
 
-<!-- END: Sticky Footer -->
+<footer class="container-fluid text-center">
+  <p>Footer Text</p>
+</footer>
 
 </body>
-
 </html>
+
 }
