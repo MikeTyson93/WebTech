@@ -19,10 +19,34 @@
       border-radius: 0;
     }
     
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 450px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+    
     /* Add a gray background color and some padding to the footer */
     footer {
-      background-color: #f2f2f2;
-      padding: 25px;
+      background-color: #f1f1f1;
+      padding: 15px;
+    }
+    
+    #htwglogo {
+        background-color: #FFFFFF;
+    }
+    
+     /* On small screens, set height to 'auto' for sidenav and grid */
+    @@media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;
+      }
     }
   </style>
 </head>
@@ -32,7 +56,6 @@
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -50,10 +73,10 @@
   </div>
 </nav>
 
-<div class="container-fluid text-center">
+<div class="container-fluid">
   <div class="row content">
-    <div class="col-sm-2 sidenav">
-      <p><img id="htwg" src="@routes.Assets.at("images/htwg-logo.jpg")" class="logo"/></p>
+    <div id="htwglogo" class="col-sm-2 sidenav">
+      <p><img id="htwg" class="img-responsive" src="@routes.Assets.at("images/htwg-logo.jpg")" class="logo"/></p>
     </div>
     <div class="col-sm-8 text-left">
       <h1>Vier Gewinnt</h1>
@@ -73,14 +96,14 @@
         <h3>Vorsicht, hoher Frustrationsfaktor!</h3>
         <div class="center">
         <p>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/Mr-eJ_x_MW0" frameborder="0" allowfullscreen></iframe><br></br>
+            <iframe src="https://www.youtube.com/embed/Mr-eJ_x_MW0" frameborder="0" allowfullscreen></iframe><br></br>
         </p>
         </div>
     </div>
     <div class="col-sm-2 sidenav">
       <a style="display:block" href="http://theater.htwg-konstanz.de/2016/update-strasser-jetzt-noch-besser/">
       <div class="well">
-        <p><img id="strasser" src="@routes.Assets.at("images/strasser.jpg")" /></p>
+        <img id="strasser" src="@routes.Assets.at("images/strasser.jpg")" />
       </div>
       </a>
       <div class="well">
@@ -91,10 +114,18 @@
 </div>
 
 <footer class="container-fluid text-center">
-  <p>Projekt im Rahmen der Veranstaltung "Web-Technologie"<br></br>
-      Michael Merkle <br></br>
-      Alter Ortsweg 10a - 88709 Meersburg <br></br>
-      E-Mail: <a href="mailto:mimerkle&#64htwg-konstanz.de">mimerkle&#64htwg-konstanz.de</a>
+
+  <p>Projekt im Rahmen der Veranstaltung "Web-Technologie"</br>
+  <div class="col-sm-6 text-left">
+      Michael Merkle </br>
+      Alter Ortsweg 10a - 88709 Meersburg</br>
+      E-Mail: <a href="mailto:mimerkle&#64htwg-konstanz.de">mimerkle&#64thwg-konstanz.de</a>
+   </div>
+   <div class="col-sm-6 text-right">
+       Stephan Trube </br>
+       Petershauser Str. 30 - 78467 Konstanz</br>
+       E-Mail: <a href="mailto:sttrube&#64htwg-konstanz.de">sttrube&#64thwg-konstanz.de</a>
+   </div>
   </p>
 </footer>
 
