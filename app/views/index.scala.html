@@ -25,7 +25,6 @@
     /* Set gray background color and 100% height */
     .sidenav {
       padding-top: 20px;
-      background-color: #f1f1f1;
       height: 100%;
     }
     
@@ -40,7 +39,7 @@
     }
     
      /* On small screens, set height to 'auto' for sidenav and grid */
-    @@media screen and (max-width: 767px) {
+    @@media screen and (screen.max-width: @@screen-sm-min) {
       .sidenav {
         height: auto;
         padding: 15px;
@@ -103,7 +102,7 @@
     <div class="col-sm-2 sidenav">
       <a style="display:block" href="http://theater.htwg-konstanz.de/2016/update-strasser-jetzt-noch-besser/">
       <div class="well">
-        <img id="strasser" src="@routes.Assets.at("images/strasser.jpg")" />
+        <img id="strasser" class="img-responsive" src="@routes.Assets.at("images/strasser.jpg")" />
       </div>
       </a>
       <div class="well">
