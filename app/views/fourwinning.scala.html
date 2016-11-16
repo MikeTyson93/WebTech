@@ -31,7 +31,20 @@
     </div>
     <div class="col-sm-8 text-middle">
       <h1>Das Spiel</h1>
-      <p>	@Html(game)
+      <p>	<!--@Html(game)-->
+       <div class="table-responsive">
+            <table class=table text-center>
+                <tr>
+                    <td><img id="gamefield" class="img-responsive" src="@routes.Assets.at("images/column.gif")" class="gam"e/></td>
+                    <td><img id="gamefield" class="img-responsive" src="@routes.Assets.at("images/column.gif")" class="gam"e/></td>
+                    <td><img id="gamefield" class="img-responsive" src="@routes.Assets.at("images/column.gif")" class="gam"e/></td>
+                    <td><img id="gamefield" class="img-responsive" src="@routes.Assets.at("images/column.gif")" class="gam"e/></td>
+                    <td><img id="gamefield" class="img-responsive" src="@routes.Assets.at("images/column.gif")" class="gam"e/></td>
+                    <td><img id="gamefield" class="img-responsive" src="@routes.Assets.at("images/column.gif")" class="gam"e/></td>
+                    <td><img id="gamefield" class="img-responsive" src="@routes.Assets.at("images/column.gif")" class="gam"e/></td>
+                </tr>
+            </table>
+        </div>
       </p>
     </div>
     <div class="col-sm-2 sidenav">
