@@ -16,6 +16,24 @@
       max-height:100%;
   }
   
+
+    body {
+        margin-top: 50px;
+   } 
+  
+   /* Remove the navbar's default margin-bottom and rounded borders */
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f1f1f1;
+      padding: 25px;
+    }
+  
   .navbar .nav > li{
       float: none;
       display: inline-block;
@@ -47,7 +65,6 @@
     .sidenav {
       padding-top: 20px;
       background-color: #FFFFFF;
-      height: 100%;
     }
     
     #htwglogo {
@@ -55,26 +72,12 @@
     }
     
     /* Set black background color, white text and some padding */
-    footer {
-      background-color: #555;
-      padding: 15px;
+    @media screen and (max-width: 767px) {
+      footer{
+        display:none;   
+      }
     }
     
-    /* On small screens, set height to 'auto' for sidenav and grid */
-    @media screen and (max-width: 767px) {
-      .sidenav {
-        height: auto;
-        padding: 15px;
-      }
-      .row.content {height:100%;
-          float:none;
-          width:50%;
-      }
-      
-      footer {
-          width:50%;
-          float:left;
-          text-align:left;
-      }
-    }
+    
+    
   }
