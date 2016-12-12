@@ -78,7 +78,7 @@ function spawn() {
 
     // create a new image called sheep
     var sheep = document.createElement("img");
-    sheep.src = "https://openclipart.org/download/1744/TheStructorr-sheep.svg";
+    sheep.src = '@routes.Assets.at("javascript/util.js")';
     sheep.className = "sheep";
     sheep.style.position = "absolute";
     sheep.style.width = scale + '%';
