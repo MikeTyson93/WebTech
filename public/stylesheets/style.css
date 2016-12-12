@@ -76,6 +76,10 @@
       footer{
         display:none;   
       }
+      .well{
+        display:none;
+      }
+      
     }
     
     
