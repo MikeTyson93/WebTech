@@ -10,6 +10,19 @@
   body {
       padding-top: 100px;
   }
+  #gamefield{
+    display:inline;    
+    background-color:white;
+  }
+  
+  #gamefield tr{
+    text-align:center; 
+    vertical-align:middle;
+  }
+  
+  #gamefield td{
+    padding: 0px;    
+  }
   
   #strasser {
       max-width:100%;
@@ -82,6 +95,9 @@
       
     }
     
-    
+    body 
+    {
+        background: url("../images/lurch.svg") blue  no-repeat fixed center;
+    }
     
   }
