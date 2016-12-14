@@ -1,3 +1,5 @@
+console.log("sheep.js");
+
 var scale = 20;     // image scale in percent
 
 var jumpHeight = 30;    // default jump height
