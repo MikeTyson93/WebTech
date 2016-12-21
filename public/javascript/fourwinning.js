@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 function openSocket(){
     socket = new WebSocket('http://localhost:9000/ws');
     socket.onopen = function(){
@@ -12,3 +13,17 @@ function throwChip(elementID)
 {
     console.log("Element ID: ", elementID);
 }
+=======
+console.log("fourwinning.js loaded!");
+
+function throwChip(event) {
+    console.log("click detected!");
+    console.log("event info: ", event);
+}
+
+
+$('#throwChip').click(function(event) {
+    console.log("click detected!");
+    console.log("event info: ", event);
+});
+>>>>>>> f2fceef8e069e5bf196229d7ed9e0c2c2123c639

@@ -1,4 +1,6 @@
 // http://stackoverflow.com/questions/1038727/how-to-get-browser-width-using-javascript-code
+console.log("util.js");
+
 function getWidth() {
   if (self.innerWidth) {
     return self.innerWidth;
