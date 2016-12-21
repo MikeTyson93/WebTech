@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 console.log("sheep.js");
 
+=======
+>>>>>>> 484721f5a0bc3652a9efc59faae7b8f7ece28efe
 var scale = 20;     // image scale in percent
 
 var jumpHeight = 30;    // default jump height
@@ -80,7 +83,11 @@ function spawn() {
 
     // create a new image called sheep
     var sheep = document.createElement("img");
+<<<<<<< HEAD
     sheep.src = '@routes.Assets.at("javascript/util.js")';
+=======
+    sheep.src = "https://openclipart.org/download/1744/TheStructorr-sheep.svg";
+>>>>>>> 484721f5a0bc3652a9efc59faae7b8f7ece28efe
     sheep.className = "sheep";
     sheep.style.position = "absolute";
     sheep.style.width = scale + '%';

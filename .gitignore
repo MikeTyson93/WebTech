@@ -1,39 +1,67 @@
+# sources:
+# http://stackoverflow.com/questions/24297331/whats-recommended-gitignore-for-scala-sbt-project-in-intellij-idea
+
+
 # IDE specific
 .idea/
 .eclipse
+
+# Scala
+target
+*.class
+*.log
+
+# IntelliJ
+*.ipr
+*.iws
+
+# Vim
+tags
+.*.swp
+.*.swo
+
+# Eclipse
+build
+.settings
+org.scala-ide.sdt.core/META-INF/MANIFEST.MF
+org.scala-ide.sdt.update-site/site.xml`
+
+# OS X
+.DS_Store
+
+# sbt specific
+.cache/
+.history/
+.lib/
+dist/*
+lib_managed/
+src_managed/
+project/boot/
+project/plugins/project/
 
 # sbt by Boger
 .cache
 .cache-main
 .cache-tests
 .history
-.lib/
 lib/*.tmp
-dist/*
-target/
-lib_managed/
-src_managed/
-project/boot/
-project/plugins/project/
 logs/
-project/.sbtserver
 .sbtserver
+
+
+# Scala-IDE specific
+.scala_dependencies
+.worksheet
 
 # desperate sacrifices to the almighty goddess of random
 project/
-target/
-.settings/
 RUNNING_PID
 bin/
 /db
 /lib/
-/logs/
 /modules
-/project/target
-/target
 tmp/
 test-result
 server.pid
 *.eml
 /dist/
-.cache
