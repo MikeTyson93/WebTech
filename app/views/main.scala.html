@@ -2,27 +2,46 @@
 
 <!DOCTYPE html>
 <html>
+<div class='background-image1'>
 <head>
-    <title>@title</title>
     <link rel='shortcut icon' type='image/png' href='@routes.Assets.at("images/favicon.png")'>
     <link rel='stylesheet' href='@routes.WebJarAssets.at(WebJarAssets.locate("bootstrap.min.css"))'>
     <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("jquery.min.js"))'></script>
-    <style>
-    body {
-        margin-top: 50px;
-    }
-    </style>
+  <title>Vier Gewinnt</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" 
+                       href='@routes.Assets.at("stylesheets/style.css")'>
+  <link href='@routes.Assets.at("images/background.svg")" rel="image'>
+  <script type='text/javascript' src='@routes.Assets.at("javascript/fourwinning.js")'></script>
+    <script type='text/javascript' src='@routes.Assets.at("javascript/main.js")'></script>
+     
 </head>
 <body>
-    <div class="navbar navbar-fixed-top">
-        <div class="navbar-inner">
-            <div class="container-fluid">
-                <a id="titleLink" class="brand" href="/">@title</a>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        @content
-    </div>
+<div class="container-fluid">
+    @content
+</div>
+<footer>
+<div class="container-fluid text-center">
+  <p>Projekt im Rahmen der Veranstaltung "Web-Technologie"</br>
+  <div class="col-xs-12 col-sm-6 text-left">
+      Michael Merkle </br>
+      Alter Ortsweg 10a - 88709 Meersburg</br>
+      E-Mail: <a href="mailto:mimerkle&#64htwg-konstanz.de">mimerkle&#64thwg-konstanz.de</a>
+   </div>
+   <div class="col-xs-12 col-sm-6 text-right">
+       Stephan Trube </br>
+       Petershauser Str. 30 - 78467 Konstanz</br>
+       E-Mail: <a href="mailto:sttrube&#64htwg-konstanz.de">sttrube&#64thwg-konstanz.de</a>
+   </div>
+  </p>
+
+</div>
+</footer>
 </body>
+</div>
 </html>
