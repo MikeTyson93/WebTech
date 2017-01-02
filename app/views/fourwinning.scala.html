@@ -30,28 +30,11 @@
     <div class="col-sm-8 text-middle">
       <h1>Das Spiel</h1>
       <p>	<!--@Html(game)-->
+      <button type="button" id="toggle" align="center" class="btn btn-primary" onclick="buildGame()">Start New Game</button>
        <div id="divgame" class="table-responsive">
+            
             <table id="gamefield" class=table align="center" text-center cellspacing="0" cellpadding="0">
-            <div>
-                <tr align="center">
-                    <td><img id="1" class="img-responsive throwChip" src="@routes.Assets.at("images/grey-circle.gif")"/></td>
-                    <td><img id="2" class="img-responsive throwChip" src="@routes.Assets.at("images/grey-circle.gif")"/></td>
-                    <td><img id="3" class="img-responsive throwChip" src="@routes.Assets.at("images/grey-circle.gif")"/></td>
-                    <td><img id="4" class="img-responsive throwChip" src="@routes.Assets.at("images/grey-circle.gif")"/></td>
-                    <td><img id="5" class="img-responsive throwChip" src="@routes.Assets.at("images/grey-circle.gif")"/></td>
-                    <td><img id="6" class="img-responsive throwChip" src="@routes.Assets.at("images/grey-circle.gif")"/></td>
-                    <td><img id="7" class="img-responsive throwChip" src="@routes.Assets.at("images/grey-circle.gif")"/></td>
-                </tr>
-                <tr align="center">
-                    <td><img id="gamefield1" class="img-responsive throwChip" src="@routes.Assets.at("images/column.gif")"/></td>
-                    <td><img id="gamefield2" class="img-responsive throwChip" src="@routes.Assets.at("images/column.gif")"/></td>
-                    <td><img id="gamefield3" class="img-responsive throwChip" src="@routes.Assets.at("images/column.gif")"/></td>
-                    <td><img id="gamefield4" class="img-responsive throwChip" src="@routes.Assets.at("images/column.gif")"/></td>
-                    <td><img id="gamefield5" class="img-responsive throwChip" src="@routes.Assets.at("images/column.gif")"/></td>
-                    <td><img id="gamefield6" class="img-responsive throwChip" src="@routes.Assets.at("images/column.gif")"/></td>
-                    <td><img id="gamefield7" class="img-responsive throwChip" src="@routes.Assets.at("images/column.gif")"/></td>
-                </tr>
-            </div>
+            
             </table>
         </div>
       </p>
@@ -68,5 +51,60 @@
     </div>
   </div>
 </div>
-	
+
+
+<script language="javascript" type="text/javascript">
+    var cols = 7;
+    var rows = 7;
+    var innerhtml = "";
+    var counter = 0;
+    for (var i=0; i < rows; i++){
+        innerhtml = innerhtml + '<tr align="center">';
+        for (var j=0; j < cols; j++){
+            counter++;
+            var s = String(i) + "," + String(j);
+            if (i == 0){
+                innerhtml = innerhtml + '<td><img id=' + j + ' class="img-responsive throwChip" src="@routes.Assets.at("images/pfeil.gif")"/></td>'; 
+                continue;
+            }
+            if (counter % 3 == 0){
+                innerhtml = innerhtml + '<td><img id=' + s + ' class="img-responsive throwChip" src="@routes.Assets.at("images/leer.gif")"/></td>';
+                continue;
+            }
+            else if (counter % 3 == 1){
+                innerhtml = innerhtml + '<td><img id=' + s + ' class="img-responsive throwChip" src="@routes.Assets.at("images/gelb.gif")"/></td>';
+                continue;
+                
+            } 
+            else if (counter % 3 == 2){
+                innerhtml = innerhtml + '<td><img id=' + s + ' class="img-responsive throwChip" src="@routes.Assets.at("images/rot.gif")"/></td>';
+                continue;
+            }
+        }
+        innerhtml = innerhtml + "</tr>";
+    }
+    document.getElementById("gamefield").innerHTML = innerhtml;
+
+
+    function buildGame(){
+        document.getElementById('toggle').style.visibility = 'hidden';
+        var cols = 7;
+        var rows = 7;
+        var innerhtml = "";
+        for (var i=0; i < rows; i++){
+            innerhtml = innerhtml + '<tr align="center">';
+            for (var j=0; j < cols; j++){
+                var s = String(i) + "," + String(j);
+                if (i == 0){
+                    innerhtml = innerhtml + '<td><img id=' + j + ' class="img-responsive throwChip" src="@routes.Assets.at("images/pfeil.gif")"/></td>'; 
+                    continue;
+                }
+                innerhtml = innerhtml + '<td><img id=' + s + ' class="img-responsive throwChip" src="@routes.Assets.at("images/leer.gif")"/></td>';
+                    continue;
+            }
+            innerhtml = innerhtml + "</tr>";
+        }
+        document.getElementById("gamefield").innerHTML = innerhtml;
+    }
+</script>
 }
