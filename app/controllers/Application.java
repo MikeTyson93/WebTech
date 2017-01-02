@@ -5,10 +5,15 @@ import java.io.IOException;
 import de.htwg.se.ws1516.fourwinning.FourWinning;
 import de.htwg.se.ws1516.fourwinning.view.tui.Tui;
 import de.htwg.se.ws1516.fourwinning.view.gui.Gui;
+import de.htwg.se.ws1516.fourwinning.controller.IGameController;
+import models.GridObserver;
 import play.mvc.Controller;
 import play.mvc.Result;
+import play.mvc.WebSocket;
 
 public class Application extends Controller {
+    
+    static IGameController controller;
     
     public static Result index() {
         return ok(views.html.index.render("Hello Play Framework"));
@@ -17,6 +22,7 @@ public class Application extends Controller {
     public static Result fourwinning() {
     	try {
 			FourWinning game = FourWinning.getInstance();
+			controller = game.getController();
 			//Tui textui = game.getTui();
 			//Gui graphicUi = new Gui(FourWinning.controller);
 			//textui.createGameArea();
@@ -50,4 +56,14 @@ public class Application extends Controller {
     public static Result contact(){
         return ok(views.html.contact.render("Kontakte"));
     }
+    
+    public static WebSocket<String> connectWebSocket() {
+        return new WebSocket<String>() {
+            public void onReady(WebSocket.In<String> in, WebSocket.Out<String> out) {
+            	new GridObserver(controller,out);
+            }
+
+        };
+    }
+ 
 }
