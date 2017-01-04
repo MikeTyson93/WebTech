@@ -13,8 +13,6 @@ function throwChip(elementID)
     console.log("Element ID: ", elementID);
 }
 
-console.log("fourwinning.js loaded!");
-
 function throwChip(event) {
     console.log("click detected!");
     console.log("event info: ", event);

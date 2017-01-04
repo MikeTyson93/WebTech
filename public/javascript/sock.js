@@ -40,27 +40,37 @@ $(function() {
 
 
 	}//End connect  
-});  
-
+});
 
 function buildNewGameField(msg){
-    var cols = 7;
     var rows = 7;
+
+    var data = msg.meta;
+    var columns = data.columns;
+    var arrayOfArrays = data.feld;
+
     var innerhtml = "";
-    var path = '"@routes.Assets.at("/images/leer.gif")"';
-    console.log(msg);
-    for (var i=0; i < rows; i++){
-        innerhtml = innerhtml + '<tr align="center">';
-        for (var j=0; j < cols; j++){
-            var s = String(i) + "," + String(j);
-            if (i === 0){
-                innerhtml = innerhtml + '<td><img id=' + j + ' class="img-responsive throwChip" src="/assets/images/pfeil.gif"/></td>'; 
-                continue;
+    for (var row = 0; row < rows; row++){
+        innerhtml += '<tr align="center">';
+        for (var col = 0; col < columns; col++){
+            var s = String(row) + "," + String(col);
+            if (row == 0) {
+                innerhtml += makeString(col, "pfeil"); // '<td><img id=' + col + ' class="img-responsive throwChip" src="/assets/images/pfeil.gif"/></td>';
+            } else {
+                var owner = arrayOfArrays[row][col].owner
+                var color = "leer";
+
+                if (owner)
+                {
+                    // TODO: generify
+                    if (owner.name === "Michael") color = "gelb";
+                    if (owner.name === "Stephan") color = "rot";
+                }
+
+                innerhtml += makeString(s, color); //'<td><img id=' + s + ' class="img-responsive throwChip" src="/assets/images/' + color + '.gif"/></td>';
             }
-            innerhtml = innerhtml + '<td><img id=' + s + ' class="img-responsive throwChip" src="/assets/images/leer.gif"/></td>';
         }
-        innerhtml = innerhtml + "</tr>";
+        innerhtml += "</tr>";
     }
     document.getElementById("gamefield").innerHTML = innerhtml;
-
 }
