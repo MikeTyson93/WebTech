@@ -55,11 +55,11 @@ function buildNewGameField(msg){
         for (var col = 0; col < columns; col++){
             var s = String(row) + "," + String(col);
             if (row == 0) {
-                innerhtml += makeString(col, "pfeil"); // '<td><img id=' + col + ' class="img-responsive throwChip" src="/assets/images/pfeil.gif"/></td>';
+                innerhtml += '<td><img id=' + col + ' class="img-responsive throwChip" src="/assets/images/pfeil.gif"/></td>'; //makeString(col, "pfeil"); //
             } else {
 
-                console.log("arrayOfArrays[%d][%d]: ", row, col);
-                console.log(arrayOfArrays[row][col]);
+                //console.log("arrayOfArrays[%d][%d]: ", row, col);
+                //console.log(arrayOfArrays[row][col]);
 
                 var owner = arrayOfArrays[row][col].owner
                 var color = "leer";
