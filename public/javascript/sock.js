@@ -43,7 +43,7 @@ $(function() {
 });
 
 function buildNewGameField(msg){
-    var rows = 7;
+    var rows = 6;
 
     var data = msg.meta;
     var columns = data.columns;
@@ -57,6 +57,10 @@ function buildNewGameField(msg){
             if (row == 0) {
                 innerhtml += makeString(col, "pfeil"); // '<td><img id=' + col + ' class="img-responsive throwChip" src="/assets/images/pfeil.gif"/></td>';
             } else {
+
+                console.log("arrayOfArrays[%d][%d]: ", row, col);
+                console.log(arrayOfArrays[row][col]);
+
                 var owner = arrayOfArrays[row][col].owner
                 var color = "leer";
 
@@ -67,7 +71,7 @@ function buildNewGameField(msg){
                     if (owner.name === "Stephan") color = "rot";
                 }
 
-                innerhtml += makeString(s, color); //'<td><img id=' + s + ' class="img-responsive throwChip" src="/assets/images/' + color + '.gif"/></td>';
+                innerhtml += '<td><img id=' + s + ' class="img-responsive throwChip" src="/assets/images/' + color + '.gif"/></td>';//makeString(s, color);
             }
         }
         innerhtml += "</tr>";
