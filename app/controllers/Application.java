@@ -15,6 +15,7 @@ import play.mvc.WebSocket;
 public class Application extends Controller {
     
     static IGameController controller;
+    static FourWinning game;
     
     public static Result index() {
         return ok(views.html.index.render("Hello Play Framework"));
@@ -22,7 +23,7 @@ public class Application extends Controller {
     
     public static Result fourwinning() {
     	try {
-			FourWinning game = FourWinning.getInstance();
+			game = FourWinning.getInstance();
 			controller = game.getController();
 			//Tui textui = game.getTui();
 			//Gui graphicUi = new Gui(FourWinning.controller);
@@ -67,5 +68,20 @@ public class Application extends Controller {
             
         };
     }
-
+    /*
+    public static void setnameofplayer1(String name){
+        // TODO: Save the name into the fourwinning module for the first player
+        game.setPlayerNameOne(name);
+    }
+    
+    public static void setnameofplayer2(String name){
+        // TODO: Save the name into the fourwinning module for the first player 
+        game.setPlayerNameTwo(name);
+        try{
+            game.startGame();
+        } catch (java.io.IOException e) {
+            e.printStackTrace();   
+           
+        }
+    }*/
 }
