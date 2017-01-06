@@ -1,8 +1,13 @@
 function openSocket(){
-    socket = new WebSocket('http://localhost:9000/ws');
-    socket.onopen = function(){
-        socket.send('hello');
-    }
+    var socket = new WebSocket("ws://localhost:9000/socket");;
+    socket.onopen = function(){  message('Socket Status: '+socket.readyState+' (open)');  }  ;
+    
+    socket.onclose = function(){ message('Socket Status: '+socket.readyState+' (Closed)');  }  ;    
+    
+    function send(col){ 
+			socket.send(col);
+		}  
+		
     socket.onmessage = function(s){
         alert('got reply: ' + s)
     }

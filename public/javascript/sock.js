@@ -1,3 +1,5 @@
+var socket;
+
 $(function() {
     // add a click handler to the button
     $("#getMessageButton").click(function(event) {
@@ -16,23 +18,27 @@ $(function() {
 	connect();  
 
 	function connect(){       
-		var socket = new WebSocket("ws://localhost:9000/socket");
+		socket = new WebSocket("ws://localhost:9000/socket");
 
 		message('Socket Status: '+socket.readyState + ' (ready)');  
 
 		socket.onopen = function(){  message('Socket Status: '+socket.readyState+' (open)');  }  ;
 
 		socket.onmessage = function(msg){
-			var msg = JSON.parse(msg.data);
-			buildNewGameField(msg);
-		} ;
+		    var datastring = String(msg.data);
+		    if (datastring.startsWith("Game Over!")){
+		        alert(msg.data);
+		    } else if (datastring.startsWith("Draw")){
+		        alert(msg.data);
+		    } else {
+    		var msg = JSON.parse(msg.data);
+	    	buildNewGameField(msg);
+		    }
+		        
+		    } ;
 		socket.onclose = function(){ message('Socket Status: '+socket.readyState+' (Closed)');  }  ;          
 
-		function send(){  
-			var grid = "";
-			socket.send(grid);  
-			message('Sent grid '); 
-		}  
+		
 
 		function message(msg){  
 			$('#wsLog').append('<p>' + msg +'</p>');  
@@ -42,9 +48,14 @@ $(function() {
 	}//End connect  
 });
 
+function send(col){
+            console.log(col);
+			socket.send(col); 
+		}  
+
 function buildNewGameField(msg){
     var rows = 6;
-
+    console.log(msg);
     var data = msg.meta;
     var columns = data.columns;
     var arrayOfArrays = data.feld;
@@ -55,7 +66,7 @@ function buildNewGameField(msg){
         for (var col = 0; col < columns; col++){
             var s = String(row) + "," + String(col);
             if (row == 0) {
-                innerhtml += '<td><img id=' + col + ' class="img-responsive throwChip" src="/assets/images/pfeil.gif"/></td>'; //makeString(col, "pfeil"); //
+                innerhtml += '<td><img id=' + col + ' class="img-responsive throwChip" onclick="send(id)" src="/assets/images/pfeil.gif"/></td>'; //makeString(col, "pfeil"); //
             } else {
 
                 //console.log("arrayOfArrays[%d][%d]: ", row, col);

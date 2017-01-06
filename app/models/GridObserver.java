@@ -28,8 +28,9 @@ public class GridObserver implements IObserver {
 		    System.out.println("WUI was updated");
 		}
         else if (e instanceof GameOverEvent) {
-			String gameOver = String.format("%n%s hat das Spiel gewonnen!%n", controller.aktiverSpieler().getName());
+			String gameOver = String.format("Game Over! Winner is: %s%n!%n", controller.aktiverSpieler().getName());
 			out.write(gameOver);
+			
 		} else if (e instanceof GameDrawEvent){
 			String gameDraw = "Draw";
     		out.write(gameDraw);

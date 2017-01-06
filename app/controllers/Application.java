@@ -7,6 +7,7 @@ import de.htwg.se.ws1516.fourwinning.view.tui.Tui;
 import de.htwg.se.ws1516.fourwinning.view.gui.Gui;
 import de.htwg.se.ws1516.fourwinning.controller.IGameController;
 import models.GridObserver;
+import models.GridListener;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.WebSocket;
@@ -61,9 +62,10 @@ public class Application extends Controller {
         return new WebSocket<String>() {
             public void onReady(WebSocket.In<String> in, WebSocket.Out<String> out) {
             	new GridObserver(controller,out);
+            	new GridListener(in);
             }
-
+            
         };
     }
- 
+
 }
