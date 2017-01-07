@@ -16,6 +16,13 @@ public class GridObserver implements IObserver {
 
 
 	public GridObserver(IGameController controller,WebSocket.Out<String> out) {
+
+		System.out.println("controller: ");
+		System.out.println(controller);
+
+		System.out.println("this: ");
+		System.out.println(this);
+
 		controller.addObserver(this);
 		this.controller = controller;
 		this.out = out;

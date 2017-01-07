@@ -49,20 +49,20 @@ $(function() {
 });
 
 function send(col){
-            console.log(col);
-			if (socket) {
-			    if (socket.readyState === socket.OPEN) {
-			        socket.send(col);
-			    } else {
-			        console.log("Error: 'socket' state:");
-			        console.log(socket.readyState);
-			    }
-			} else console.log("Error: 'socket' not defined yet");
-		}  
+    //console.log(col);
+    if (socket) {
+        if (socket.readyState === socket.OPEN) {
+            socket.send(col);
+        } else {
+            console.log("Error: 'socket' state:");
+            console.log(socket.readyState);
+        }
+    } else console.log("Error: 'socket' not defined yet");
+}
 
 function buildNewGameField(msg){
-    var rows = 6;
-    console.log(msg);
+    var rows = 7;
+    //console.log(msg);
     var data = msg.meta;
     var columns = data.columns;
     var arrayOfArrays = data.feld;
