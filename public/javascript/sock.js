@@ -50,7 +50,14 @@ $(function() {
 
 function send(col){
             console.log(col);
-			socket.send(col); 
+			if (socket) {
+			    if (socket.readyState === socket.OPEN) {
+			        socket.send(col);
+			    } else {
+			        console.log("Error: 'socket' state:");
+			        console.log(socket.readyState);
+			    }
+			} else console.log("Error: 'socket' not defined yet");
 		}  
 
 function buildNewGameField(msg){
