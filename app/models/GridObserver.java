@@ -8,9 +8,12 @@ import de.htwg.se.ws1516.fourwinning.controller.*;
 import de.htwg.util.observer.IObserver;
 import de.htwg.util.observer.Event;
 
-
 public class GridObserver implements IObserver {
-	
+
+
+	private boolean firstTime = true;
+	private String emptyBoard;
+
 	private Out<String> out;
 	private IGameController controller;
 
@@ -23,7 +26,7 @@ public class GridObserver implements IObserver {
 		System.out.println("this: ");
 		System.out.println(this);
 
-		controller.addObserver(this);
+		if (controller != null) controller.addObserver(this);
 		this.controller = controller;
 		this.out = out;
 	}
@@ -33,10 +36,17 @@ public class GridObserver implements IObserver {
 	    if (e == null) {
 			out.write(controller.getSpielfeld().toJson());	
 		    System.out.println("WUI was updated");
+
+		    if (firstTime)
+			{
+				firstTime = false;
+				emptyBoard = controller.getSpielfeld().toJson();
+			}
 		}
         else if (e instanceof GameOverEvent) {
 			String gameOver = String.format("Game Over! Winner is: %s%n!%n", controller.aktiverSpieler().getName());
 			out.write(gameOver);
+
 			
 		} else if (e instanceof GameDrawEvent){
 			String gameDraw = "Draw";
