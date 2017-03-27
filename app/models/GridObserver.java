@@ -13,11 +13,9 @@ public class GridObserver implements IObserver {
 
 	private boolean firstTime = true;
 	private String emptyBoard;
-
 	private Out<String> out;
 	private IGameController controller;
-
-
+	
 	public GridObserver(IGameController controller,WebSocket.Out<String> out) {
 
 		System.out.println("controller: ");
@@ -42,15 +40,16 @@ public class GridObserver implements IObserver {
 				firstTime = false;
 				emptyBoard = controller.getSpielfeld().toJson();
 			}
-		}
-        else if (e instanceof GameOverEvent) {
-			String gameOver = String.format("Game Over! Winner is: %s%n!%n", controller.aktiverSpieler().getName());
-			out.write(gameOver);
-
-			
 		} else if (e instanceof GameDrawEvent){
 			String gameDraw = "Draw";
     		out.write(gameDraw);
+		} else if (e instanceof PlayerChangeEvent){
+		    
+		    String change = String.format("Spieler %s ist am Zug", controller.aktiverSpieler().getName());
+		    out.write(change);
+		} else if (e instanceof GameOverEvent) {
+			String gameOver = String.format("Game Over! Winner is: %s%n!%n", controller.aktiverSpieler().getName());
+			out.write(gameOver);
 		}
     }
 }

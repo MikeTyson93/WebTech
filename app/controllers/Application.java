@@ -6,6 +6,9 @@ import de.htwg.se.ws1516.fourwinning.FourWinning;
 import de.htwg.se.ws1516.fourwinning.view.tui.Tui;
 import de.htwg.se.ws1516.fourwinning.view.gui.Gui;
 import de.htwg.se.ws1516.fourwinning.controller.IGameController;
+import de.htwg.se.ws1516.fourwinning.controller.impl.PlayerChangeEvent;
+import de.htwg.se.ws1516.fourwinning.models.Player;
+import de.htwg.se.ws1516.fourwinning.models.Feld;
 import models.GridObserver;
 import models.GridListener;
 import play.mvc.Controller;
@@ -16,6 +19,12 @@ public class Application extends Controller {
     
     static IGameController controller;
     static FourWinning game;
+    static Feld[][] spielfeld;
+    static Player aktiv;
+    static Player eins;
+    static Player zwei;
+    static boolean instanceLoad = false;
+    static boolean firstThrow = false;
     
     public static Result index() {
         return ok(views.html.index.render("Hello Play Framework"));
@@ -25,6 +34,8 @@ public class Application extends Controller {
     	try {
 			game = FourWinning.getInstance();
 			controller = game.getController();
+			eins = controller.getPlayerOne();
+			zwei = controller.getPlayerTwo();
 			//Gui graphicUi = new Gui(FourWinning.controller);
 			//textui.createGameArea();
 			return ok(views.html.fourwinning.render("Spielfeld gebaut"));
@@ -36,16 +47,22 @@ public class Application extends Controller {
     }
     
     public static Result playfourwinning(String command) {
-    	try {
-			Tui TextUI = FourWinning.getInstance().getTui();
-			TextUI.runGameFromUrl(command);
-			System.out.println(TextUI.toString());
+    	    
+    	    spielfeld = controller.update();
+    	    aktiv = controller.aktiverSpieler();
+    	    int currentColumn = Integer.parseInt(command);
+    	    String zugerfolgreich = (controller.zug(currentColumn, aktiv));
+    	    spielfeld = controller.update();
+    	    if(controller.spielGewonnen(spielfeld, aktiv))
+    	        return ok(views.html.fourwinning.render("Fourwinning"));
+    	    
+    	    controller.notifyObservers(null);
+    	    controller.changePlayer(eins, zwei);
+    	    controller.notifyObservers(new PlayerChangeEvent());
+    	    
+    	    
 			return ok(views.html.fourwinning.render("Fourwinning"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return null;
-		}
+	
     }
     
     public static Result strategie(){

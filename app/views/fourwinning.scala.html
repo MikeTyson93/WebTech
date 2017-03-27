@@ -24,23 +24,27 @@
 </nav>
 
 <script>
+    var player1;
     window.onload = function enterName() {
     var person1 = prompt("Please enter your name", "Player One (NOT IMPLEMENTED YET!)");
     
     if (person1 === null) {
         myFunction();
     }
-
     var person2 = prompt("Please enter your name", "Player Two (NOT IMPLEMENTED YET!)");
-
     if (person2 === null) {
         myFunction();
     }
     send("player1:" + person1);
     send("player2:" + person2);
+    player1 = person1;
+    
     //emptyGame();
-
-}
+    }
+    function printBeginner(){
+        alert(player1 + ", du wirst beginnen!");
+    }
+    
 </script>
 
 <div class="container-fluid text-center">
@@ -51,7 +55,7 @@
     <div class="col-sm-8 text-middle">
       <h1>Das Spiel</h1>
       <p>	<!--@Html(game)-->
-      <button type="button" id="toggle" align="center" class="btn btn-primary" onclick="buildGame()">Start New Game</button></br>
+      <button type="button" id="toggle" align="center" class="btn btn-primary" onclick="buildGame(); printBeginner();">Start New Game</button></br>
          
        <div id="divgame" class="table-responsive">
             

@@ -2,37 +2,6 @@ var cols = 7;
 var rows = 6;
 var counter = 0;
 
-function emptyGame() {
-    var innerhtml = "";
-    for (var i=0; i < rows; i++){
-        innerhtml = '<tr align="center">';
-        for (var j=0; j < cols; j++){
-            counter++;
-            var s = String(i) + "," + String(j);
-            if (i === 0){
-                innerhtml += makeString(j, "pfeil");
-                continue;
-            }
-
-            switch(counter % 3) {
-                case 0:
-                    innerhtml += makeString(s, "leer");
-                    continue;
-
-                case 1:
-                    innerhtml += makeString(s, "gelb");
-                    continue;
-
-                case 2:
-                    innerhtml += makeString(s, "rot");
-                    continue;
-            }
-        }
-        innerhtml += "</tr>";
-    }
-    document.getElementById("gamefield").innerHTML = innerhtml;
-}
-
 function buildGame(){
     document.getElementById('toggle').style.visibility = 'hidden';
     var innerhtml = "";

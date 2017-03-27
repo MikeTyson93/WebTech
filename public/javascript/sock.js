@@ -26,17 +26,19 @@ $(function() {
 
 		socket.onmessage = function(msg){
 		    var datastring = String(msg.data);
+		    console.log(msg.data);
 		    if (datastring.startsWith("Game Over!")){
 		        alert(msg.data);
 		    } else if (datastring.startsWith("Draw")){
 		        alert(msg.data);
+		    } else if (datastring.startsWith("Spieler")){
+		        alert(msg.data);
 		    } else {
-    		var msg = JSON.parse(msg.data);
-	    	buildNewGameField(msg);
+    		var gamefield = JSON.parse(msg.data);
+	    	buildNewGameField(gamefield);
 		    }
 		        
 		};
-
 		socket.onclose = function(){ message('Socket Status: '+socket.readyState+' (Closed)');  }  ;          
 
 		
@@ -63,7 +65,6 @@ function send(col){
 
 function buildNewGameField(msg){
     var rows = 6;
-
     var data = msg.meta;
     var columns = data.columns;
     var arrayOfArrays = data.feld;
@@ -73,7 +74,6 @@ function buildNewGameField(msg){
         for (var col = 0; col < columns; col++){
             var s = String(row) + "," + String(col);
             if (row == -1) {
-
                 innerhtml += '<td><img id=' + col + ' class="img-responsive throwChip" onclick="send(id)" src="/assets/images/pfeil.gif"/></td>'; //makeString(col, "pfeil"); //
             } else {
 
