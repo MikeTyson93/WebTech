@@ -35,7 +35,8 @@ $(function() {
 	    	buildNewGameField(msg);
 		    }
 		        
-		    } ;
+		};
+
 		socket.onclose = function(){ message('Socket Status: '+socket.readyState+' (Closed)');  }  ;          
 
 		
@@ -61,18 +62,18 @@ function send(col){
 }
 
 function buildNewGameField(msg){
-    var rows = 7;
-    //console.log(msg);
+    var rows = 6;
+
     var data = msg.meta;
     var columns = data.columns;
     var arrayOfArrays = data.feld;
-
     var innerhtml = "";
-    for (var row = 0; row < rows; row++){
+    for (var row = -1; row < rows; row++){
         innerhtml += '<tr align="center">';
         for (var col = 0; col < columns; col++){
             var s = String(row) + "," + String(col);
-            if (row == 0) {
+            if (row == -1) {
+
                 innerhtml += '<td><img id=' + col + ' class="img-responsive throwChip" onclick="send(id)" src="/assets/images/pfeil.gif"/></td>'; //makeString(col, "pfeil"); //
             } else {
 

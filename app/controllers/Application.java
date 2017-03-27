@@ -25,10 +25,8 @@ public class Application extends Controller {
     	try {
 			game = FourWinning.getInstance();
 			controller = game.getController();
-			//Tui textui = game.getTui();
 			//Gui graphicUi = new Gui(FourWinning.controller);
 			//textui.createGameArea();
-
 			return ok(views.html.fourwinning.render("Spielfeld gebaut"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -41,7 +39,7 @@ public class Application extends Controller {
     	try {
 			Tui TextUI = FourWinning.getInstance().getTui();
 			TextUI.runGameFromUrl(command);
-			
+			System.out.println(TextUI.toString());
 			return ok(views.html.fourwinning.render("Fourwinning"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
