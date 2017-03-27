@@ -7,6 +7,7 @@ import de.htwg.se.ws1516.fourwinning.view.tui.Tui;
 import de.htwg.se.ws1516.fourwinning.view.gui.Gui;
 import de.htwg.se.ws1516.fourwinning.controller.IGameController;
 import models.GridObserver;
+import models.GridListener;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.WebSocket;
@@ -14,6 +15,8 @@ import play.mvc.WebSocket;
 public class Application extends Controller {
     
     static IGameController controller;
+    static FourWinning game;
+    static boolean instanceLoad = false;
     
     public static Result index() {
         return ok(views.html.index.render("Hello Play Framework"));
@@ -21,12 +24,10 @@ public class Application extends Controller {
     
     public static Result fourwinning() {
     	try {
-			FourWinning game = FourWinning.getInstance();
+			game = FourWinning.getInstance();
 			controller = game.getController();
-			//Tui textui = game.getTui();
 			//Gui graphicUi = new Gui(FourWinning.controller);
 			//textui.createGameArea();
-
 			return ok(views.html.fourwinning.render("Spielfeld gebaut"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -39,7 +40,7 @@ public class Application extends Controller {
     	try {
 			Tui TextUI = FourWinning.getInstance().getTui();
 			TextUI.runGameFromUrl(command);
-			
+			System.out.println(TextUI.toString());
 			return ok(views.html.fourwinning.render("Fourwinning"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -61,9 +62,25 @@ public class Application extends Controller {
         return new WebSocket<String>() {
             public void onReady(WebSocket.In<String> in, WebSocket.Out<String> out) {
             	new GridObserver(controller,out);
+            	new GridListener(in);
             }
-
+            
         };
     }
- 
+    /*
+    public static void setnameofplayer1(String name){
+        // TODO: Save the name into the fourwinning module for the first player
+        game.setPlayerNameOne(name);
+    }
+    
+    public static void setnameofplayer2(String name){
+        // TODO: Save the name into the fourwinning module for the first player 
+        game.setPlayerNameTwo(name);
+        try{
+            game.startGame();
+        } catch (java.io.IOException e) {
+            e.printStackTrace();   
+           
+        }
+    }*/
 }

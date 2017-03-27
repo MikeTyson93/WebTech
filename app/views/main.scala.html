@@ -11,28 +11,33 @@
             <title>Vier Gewinnt</title>
 
             <!-- Images -->
-            <link rel='shortcut icon' type='image/png' href='@routes.Assets.at("images/favicon.png")'>
             <link href='@routes.Assets.at("images/background.svg")" rel="image'>
             <link href='@routes.Assets.at("images/pfeil.gif")" rel="image'>
 
-            <!-- Bootstrap -->
-            <link rel='stylesheet' href='@routes.WebJarAssets.at(WebJarAssets.locate("bootstrap.min.css"))'>
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-            <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
             <!-- JQuery -->
-            <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("jquery.min.js"))'></script>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
-
+            
+            <!-- Bootstrap -->
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
             <!-- Custom JavaScript & CSS -->
             <link rel="stylesheet" type="text/css" href='@routes.Assets.at("stylesheets/style.css")'>
 
+		<!-- BACKUP ANYTHING -->
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+            <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+            <link rel="stylesheet" type="text/css" 
+                           href='@routes.Assets.at("stylesheets/style.css")'>
+            <link href='@routes.Assets.at("images/background.svg")" rel="image'>
+            <script type='text/javascript' src='@routes.Assets.at("javascript/fourwinning.js")'></script>
+            <script type='text/javascript' src='@routes.Assets.at("javascript/main.js")'></script>
+
             <script type='text/javascript' src='@routes.Assets.at("javascript/fourwinning.js")'></script>
             <script type='text/javascript' src='@routes.Assets.at("javascript/4w.js")'></script>
             <script type='text/javascript' src='@routes.Assets.at("javascript/sock.js")'></script>
+            <script type='text/javascript' src='@routes.Assets.at("javascript/checkIfLoaded.js")'></script>
 
         </head>
 

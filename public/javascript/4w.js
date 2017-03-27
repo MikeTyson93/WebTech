@@ -1,5 +1,5 @@
 var cols = 7;
-var rows = 7;
+var rows = 6;
 var counter = 0;
 
 function emptyGame() {
@@ -9,7 +9,7 @@ function emptyGame() {
         for (var j=0; j < cols; j++){
             counter++;
             var s = String(i) + "," + String(j);
-            if (i == 0){
+            if (i === 0){
                 innerhtml += makeString(j, "pfeil");
                 continue;
             }
@@ -30,20 +30,22 @@ function emptyGame() {
         }
         innerhtml += "</tr>";
     }
+    document.getElementById("gamefield").innerHTML = innerhtml;
 }
 
 function buildGame(){
     document.getElementById('toggle').style.visibility = 'hidden';
     var innerhtml = "";
-    for (var i=0; i < rows; i++){
+    for (var i=-1; i < rows; i++){
         innerhtml += '<tr align="center">';
         for (var j=0; j < cols; j++){
             var s = String(i) + "," + String(j);
-            if (i == 0){
-                innerhtml += makeString(j, "pfeil");
-                continue;
+            if (i === -1){
+                innerhtml += '<td><img id=' + j + ' class="img-responsive throwChip" onclick="send(id)" src="/assets/images/pfeil.gif"/></td>';
+                
+            } else {
+                innerhtml += '<td><img id=' + s + ' class="img-responsive throwChip" src="/assets/images/leer.gif"/></td>';
             }
-            innerhtml += makeString(s, "leer");
         }
         innerhtml += "</tr>";
     }
@@ -51,5 +53,6 @@ function buildGame(){
 }
 
 function makeString(index, target) {
-    return '<td><img id=' + index + ' class="img-responsive throwChip" src="@routes.Assets.at("images/' + target + '.gif")"/></td>';
+    //var buildstring = "@routes.Assets.at("images/rot.gif")";
+    //return '<td><img id=' + index + ' class="img-responsive throwChip" src="' + buildstring + '"/></td>';
 }
