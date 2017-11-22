@@ -1,3 +1,5 @@
+"use strict";   // https://www.w3schools.com/js/js_strict.asp
+
 var socket;
 
 $(function() {
