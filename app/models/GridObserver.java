@@ -44,12 +44,22 @@ public class GridObserver implements IObserver {
 			String gameDraw = "Draw";
     		out.write(gameDraw);
 		} else if (e instanceof PlayerChangeEvent){
-		    
-		    String change = String.format("Spieler %s ist am Zug", controller.aktiverSpieler().getName());
+		    String change = String.format("%s ist am Zug", controller.aktiverSpieler().getName());
 		    out.write(change);
 		} else if (e instanceof GameOverEvent) {
 			String gameOver = String.format("Game Over! Winner is: %s%n!%n", controller.aktiverSpieler().getName());
 			out.write(gameOver);
+		} //else if (e instanceof PlayerCreateEvent){
+		    // Possibility to react}
+		  else if (e instanceof WaitForPlayerEvent){
+		    // Player is missing for full session to play
+		    String sessionNotFull = String.format("Warten auf Mitspieler...%n");
+		    out.write(sessionNotFull);
+		} else if (e instanceof GameStartEvent){
+		    out.write("Starte das Spiel");
+		} else if (e instanceof FullSessionEvent){
+		    String sessionFull = String.format("Das Spiel ist momentan nur für ein Spiel optimiert.%n Dieses Spiel läuft bereits. %n Versuchen Sie es später nocheinmal");
+		    out.write(sessionFull);
 		}
     }
 }

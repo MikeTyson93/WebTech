@@ -4,6 +4,7 @@ var socket;
 var cols = 7;
 var rows = 6;
 var counter = 0;
+var playtrigger = 0;
 
 $(function() {
     // add a click handler to the button
@@ -30,14 +31,25 @@ $(function() {
 		socket.onopen = function(){  message('Socket Status: '+socket.readyState+' (open)');  }  ;
 
 		socket.onmessage = function(msg){
+		    if (playtrigger === 1){
+		        return;
+		    }
 		    var datastring = String(msg.data);
 		    console.log(msg.data);
 		    if (datastring.startsWith("Game Over!")){
-		        alert(msg.data);
+		        swal(msg.data);
 		    } else if (datastring.startsWith("Draw")){
-		        alert(msg.data);
+		        swal(msg.data);
 		    } else if (datastring.startsWith("Spieler")){
-		        alert(msg.data);
+		        swal(msg.data);
+		    } else if (datastring.startsWith("Warten")){
+		        swal(msg.data);
+		    } else if (datastring.startsWith("Das Spiel")){
+		        playtrigger = 1;
+		        swal(msg.data);
+		    } else if (datastring.startsWith("Starte")){
+		        swal.close();
+		        buildGame();
 		    } else {
     		var gamefield = JSON.parse(msg.data);
 	    	buildNewGameField(gamefield);
@@ -59,6 +71,7 @@ $(function() {
 function send(col){
     //console.log(col);
     if (socket) {
+        console.log("Try to set the stone!");
         if (socket.readyState === socket.OPEN) {
             socket.send(col);
         } else {
@@ -81,18 +94,13 @@ function buildNewGameField(msg){
             if (row == -1) {
                 innerhtml += '<td><img id=' + col + ' class="img-responsive throwChip" onclick="send(id)" src="/assets/images/pfeil.gif"/></td>'; //makeString(col, "pfeil"); //
             } else {
-
-                //console.log("arrayOfArrays[%d][%d]: ", row, col);
-                //console.log(arrayOfArrays[row][col]);
-
                 var owner = arrayOfArrays[row][col].owner
                 var color = "leer";
-
+                
                 if (owner)
                 {
-                    // TODO: generify
-                    if (owner.name === "Michael") color = "gelb";
-                    if (owner.name === "Stephan") color = "rot";
+                    if (owner["identification"] == 1) color = "gelb";
+                    if (owner["identification"] == 2) color = "rot";
                 }
 
                 innerhtml += '<td><img id=' + s + ' class="img-responsive throwChip" src="/assets/images/' + color + '.gif"/></td>';//makeString(s, color);
@@ -104,7 +112,6 @@ function buildNewGameField(msg){
 }
 
 function buildGame(){
-    document.getElementById('toggle').style.visibility = 'hidden';
     var innerhtml = "";
     for (var i=-1; i < rows; i++){
         innerhtml += '<tr align="center">';
@@ -122,7 +129,17 @@ function buildGame(){
     document.getElementById("gamefield").innerHTML = innerhtml;
 }
 
-function makeString(index, target) {
-    //var buildstring = "@routes.Assets.at("images/rot.gif")";
-    //return '<td><img id=' + index + ' class="img-responsive throwChip" src="' + buildstring + '"/></td>';
-} 
+function resetPlayTrigger(){
+    playtrigger === 0;
+}
+
+function sendPlayerName(name){
+    if (socket) {
+        if (socket.readyState === socket.OPEN) {
+            socket.send("Spieler " + name);
+        } else {
+            console.log("Error: 'socket' state:");
+            console.log(socket.readyState);
+        }
+    } else console.log("Error: 'socket' not defined yet");
+}

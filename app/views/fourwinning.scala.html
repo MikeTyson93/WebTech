@@ -26,24 +26,27 @@
 <script>
     var player1;
     window.onload = function enterName() {
-    var person1 = prompt("Please enter your name", "Player One (NOT IMPLEMENTED YET!)");
+        
+        swal({   title: "Require Username!",   
+        text: "Enter your username:",   
+        type: "input",   
+        showCancelButton: false,   
+        closeOnConfirm: false,   
+        animation: "slide-from-top",   
+        inputPlaceholder: "Username" }, 
     
-    if (person1 === null) {
-        myFunction();
+        function(inputValue){   
+            if (inputValue === false) 
+                return false;      
+            if (inputValue === "") {     
+                swal.showInputError("Please enter email!");     
+                return false   
+            }      
+            swal("Name Saved!", "You entered following username: " + inputValue, "success"); 
+            sendPlayerName(inputValue);
+        });
     }
-    var person2 = prompt("Please enter your name", "Player Two (NOT IMPLEMENTED YET!)");
-    if (person2 === null) {
-        myFunction();
-    }
-    send("player1:" + person1);
-    send("player2:" + person2);
-    player1 = person1;
-    
-    //emptyGame();
-    }
-    function printBeginner(){
-        alert(player1 + ", du wirst beginnen!");
-    }
+        
     
 </script>
 
@@ -55,7 +58,6 @@
     <div class="col-sm-8 text-middle">
       <h1>Das Spiel</h1>
       <p>	<!--@Html(game)-->
-      <button type="button" id="toggle" align="center" class="btn btn-primary" onclick="buildGame(); printBeginner();">Start New Game</button></br>
          
        <div id="divgame" class="table-responsive">
             

@@ -7,6 +7,10 @@ import de.htwg.se.ws1516.fourwinning.view.tui.Tui;
 import de.htwg.se.ws1516.fourwinning.view.gui.Gui;
 import de.htwg.se.ws1516.fourwinning.controller.IGameController;
 import de.htwg.se.ws1516.fourwinning.controller.impl.PlayerChangeEvent;
+import de.htwg.se.ws1516.fourwinning.controller.impl.PlayerCreateEvent;
+import de.htwg.se.ws1516.fourwinning.controller.impl.WaitForPlayerEvent;
+import de.htwg.se.ws1516.fourwinning.controller.impl.FullSessionEvent;
+import de.htwg.se.ws1516.fourwinning.controller.impl.GameStartEvent;
 import de.htwg.se.ws1516.fourwinning.models.Player;
 import de.htwg.se.ws1516.fourwinning.models.Feld;
 import models.GridObserver;
@@ -57,12 +61,35 @@ public class Application extends Controller {
     	        return ok(views.html.fourwinning.render("Fourwinning"));
     	    
     	    controller.notifyObservers(null);
-    	    controller.changePlayer(eins, zwei);
-    	    controller.notifyObservers(new PlayerChangeEvent());
+    	    //controller.changePlayer(eins, zwei);
+    	    //controller.notifyObservers(new PlayerChangeEvent());
     	    
     	    
 			return ok(views.html.fourwinning.render("Fourwinning"));
 	
+    }
+    
+    public static Result createPlayers(String name){
+        Player one = controller.getPlayerOne();
+        if (one.getName() == "NameSpieler1"){
+            one.setName(name);
+            controller.notifyObservers(new PlayerCreateEvent());
+            controller.notifyObservers(new WaitForPlayerEvent());
+            return ok(views.html.fourwinning.render("Fourwinning"));
+        }
+        
+        Player two = controller.getPlayerTwo();
+        if (two.getName() == "NameSpieler2"){
+            two.setName(name);
+            controller.notifyObservers(new PlayerCreateEvent());
+            controller.notifyObservers(new GameStartEvent());
+            return ok(views.html.fourwinning.render("Fourwinning"));
+        } else {
+            // Both players are created -> Session is full!
+            controller.notifyObservers(new FullSessionEvent());
+            return ok(views.html.fourwinning.render("Fourwinning"));
+        }
+        
     }
     
     public static Result strategie(){

@@ -25,12 +25,11 @@ public class GridListener{
     public void listen(){
 	    in.onMessage(new Callback<String>() {
                    public void invoke(String event) {
-                       /*
-                       if (event.startsWith("player1:"))
-                            Application.setnameofplayer1(event);
-                       if (event.startsWith("player2:"))
-                            Application.setnameofplayer2(event);*/
-                       Application.playfourwinning(event);
+                        if (event.startsWith("Spieler")){
+                            Application.createPlayers(event);
+                            return;
+                        }
+                        Application.playfourwinning(event);
                }
         });
     }
