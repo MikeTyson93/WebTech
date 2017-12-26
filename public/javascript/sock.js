@@ -5,6 +5,9 @@ var cols = 7;
 var rows = 6;
 var counter = 0;
 var playtrigger = 0;
+var playername = "";
+var active = "";
+var firstplayer = false;
 
 $(function() {
     // add a click handler to the button
@@ -12,7 +15,7 @@ $(function() {
         // make an ajax get request to get the message
         jsRoutes.controllers.MessageController.getMessage().ajax({
             success: function(data) {
-                console.log(data)
+                //console.log(data)
                 $(".well").append($("<h1>").text(data.value))
             }
         })
@@ -35,14 +38,18 @@ $(function() {
 		        return;
 		    }
 		    var datastring = String(msg.data);
-		    console.log(msg.data);
+		    //console.log(msg.data);
 		    if (datastring.startsWith("Game Over!")){
 		        swal(msg.data);
 		    } else if (datastring.startsWith("Draw")){
 		        swal(msg.data);
 		    } else if (datastring.startsWith("Spieler")){
+		        active = msg.data.split(" ")[1];
+		        console.log(active);
 		        swal(msg.data);
 		    } else if (datastring.startsWith("Warten")){
+		        active = playername;
+		        firstplayer = true;
 		        swal(msg.data);
 		    } else if (datastring.startsWith("Das Spiel")){
 		        playtrigger = 1;
@@ -50,6 +57,28 @@ $(function() {
 		    } else if (datastring.startsWith("Starte")){
 		        swal.close();
 		        buildGame();
+		        
+		        if (firstplayer == true){
+		            swal({
+  title: "Are you sure?",
+  text: "Sie sind an der Reihe!",
+  type: "warning",
+  showCancelButton: true,
+  confirmButtonColor: "#DD6B55",
+  confirmButtonText: "Yes, delete it!"
+}, function(){
+  console.log("No we run the next line of code!"); });
+		        } else {
+		             swal({
+  title: "Are you sure?",
+  text: "Ihr Gegner ist an der Reihe!",
+  type: "warning",
+  showCancelButton: true,
+  confirmButtonColor: "#DD6B55",
+  confirmButtonText: "Yes, delete it!"
+}, function(){
+  console.log("No we run the next line of code!"); });
+		        }
 		    } else {
     		var gamefield = JSON.parse(msg.data);
 	    	buildNewGameField(gamefield);
@@ -69,9 +98,14 @@ $(function() {
 });
 
 function send(col){
+    // Check if it is the turn of the player
+    if (playername != active){
+        swal("Sie sind momentan nicht an der Reihe.");
+        return;
+    }
     //console.log(col);
     if (socket) {
-        console.log("Try to set the stone!");
+        //console.log("Try to set the stone!");
         if (socket.readyState === socket.OPEN) {
             socket.send(col);
         } else {
@@ -137,6 +171,7 @@ function sendPlayerName(name){
     if (socket) {
         if (socket.readyState === socket.OPEN) {
             socket.send("Spieler " + name);
+            playername = name;
         } else {
             console.log("Error: 'socket' state:");
             console.log(socket.readyState);

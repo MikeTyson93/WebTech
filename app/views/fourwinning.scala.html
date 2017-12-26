@@ -39,10 +39,15 @@
             if (inputValue === false) 
                 return false;      
             if (inputValue === "") {     
-                swal.showInputError("Please enter email!");     
+                swal.showInputError("Please enter username!");     
                 return false   
             }      
             swal("Name Saved!", "You entered following username: " + inputValue, "success"); 
+            if (inputValue.indexOf(" ") !=-1) {
+                swal("Ihre eingabe darf keine Leerzeichen enthalten.");
+                enterName();
+                return;
+            }
             sendPlayerName(inputValue);
         });
     }
