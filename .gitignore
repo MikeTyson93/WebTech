@@ -3,6 +3,8 @@ project/project/*
 project/target/*
 project/*
 .sbtserver/*
+playArea.data
+bin/*
 target
 tmp
 .history
