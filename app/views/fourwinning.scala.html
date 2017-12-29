@@ -27,20 +27,19 @@
     var player1;
     window.onload = function enterName() {
         
-        swal({   title: "Require Username!",   
-        text: "Enter your username:",   
-        type: "input",   
-        showCancelButton: false,   
-        closeOnConfirm: false,   
-        animation: "slide-from-top",   
-        inputPlaceholder: "Username" }, 
-    
-        function(inputValue){   
-            if (inputValue === false) 
-                return false;      
-            if (inputValue === "") {     
-                swal.showInputError("Please enter username!");     
-                return false   
+        swal({   title: "Name eingeben:",
+        type: "input",
+        showCancelButton: false,
+        closeOnConfirm: false,
+        animation: "slide-from-top",
+        inputPlaceholder: "Username" },
+
+        function(inputValue){
+            if (inputValue === false)
+                return false;
+            if (inputValue === "") {
+                swal.showInputError("Please enter username!");
+                return false
             }      
             swal("Name Saved!", "You entered following username: " + inputValue, "success"); 
             if (inputValue.indexOf(" ") !=-1) {
@@ -63,13 +62,11 @@
     <div class="col-sm-8 text-middle">
       <h1>Das Spiel</h1>
       <p>	<!--@Html(game)-->
-         
-       <div id="divgame" class="table-responsive">
-            
-            <table id="gamefield" class=table align="center" text-center cellspacing="0" cellpadding="0">
-            
-            </table>
+        <div id="divgame" class="table-responsive">
+            <table id="gamefield" class=table align="center" text-center cellspacing="0" cellpadding="0"></table>
         </div>
+      <p/>
+      <div>Am Zug: </div>
       </p>
     </div>
     <div class="col-sm-2 sidenav">

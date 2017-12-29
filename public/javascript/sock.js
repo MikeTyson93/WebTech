@@ -60,24 +60,24 @@ $(function() {
 		        
 		        if (firstplayer == true){
 		            swal({
-  title: "Are you sure?",
-  text: "Sie sind an der Reihe!",
-  type: "warning",
-  showCancelButton: true,
-  confirmButtonColor: "#DD6B55",
-  confirmButtonText: "Yes, delete it!"
-}, function(){
-  console.log("No we run the next line of code!"); });
-		        } else {
-		             swal({
-  title: "Are you sure?",
-  text: "Ihr Gegner ist an der Reihe!",
-  type: "warning",
-  showCancelButton: true,
-  confirmButtonColor: "#DD6B55",
-  confirmButtonText: "Yes, delete it!"
-}, function(){
-  console.log("No we run the next line of code!"); });
+                      title: "Are you sure?",
+                      text: "Sie sind an der Reihe!",
+                      type: "warning",
+                      showCancelButton: true,
+                      confirmButtonColor: "#DD6B55",
+                      confirmButtonText: "Yes, delete it!"
+                    }, function(){
+                      console.log("Now we run the next line of code!"); });
+                } else {
+                    swal({
+                    title: "Are you sure?",
+                    text: "Ihr Gegner ist an der Reihe!",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Yes, delete it!"
+                }, function(){
+                  console.log("No we run the next line of code!"); });
 		        }
 		    } else {
     		var gamefield = JSON.parse(msg.data);
