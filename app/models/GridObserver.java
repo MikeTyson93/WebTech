@@ -43,7 +43,7 @@ public class GridObserver implements IObserver {
 		} else if (e instanceof GameDrawEvent){
 			String gameDraw = "Draw";
     		out.write(gameDraw);
-		} else if (e instanceof PlayerChangeEvent){
+		} else if (e instanceof PlayerChangeEvent){			// nachdem aktueller Spieler Zug getan hat
 		    String change = String.format("%s ist am Zug", controller.aktiverSpieler().getName());
 		    out.write(change);
 		} else if (e instanceof GameOverEvent) {
