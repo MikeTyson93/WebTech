@@ -49,7 +49,11 @@ $(function() {
 		        active = msg.data.split(" ")[1];
 		        console.log(active);
 		        //swal(msg.data);
-		        updateStatus(msg.data);
+	            if (playername == active){
+	                updateStatus("Du bist dran.");
+	            } else {
+	                updateStatus(msg.data);
+	            }
 		    } else if (datastring.startsWith("Warten")){
 		        active = playername;
 		        firstplayer = true;
