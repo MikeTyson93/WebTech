@@ -61,10 +61,16 @@ $(function() {
 		    } else if (datastring.startsWith("Das Spiel")){         // 3. Spieler möchte joinen (geht nicht)
 		        playtrigger = 1;
 		        swal(msg.data);
-		    } else if (datastring.startsWith("Starte")){
+		    } else if (datastring.startsWith("Starte")){            // GameStartEvent: Spiel beginnt nach Namen Eingabe
 		        swal.close();
 		        buildGame();
-		        
+
+                if (playername == active){
+                    updateStatus("Du beginnst das Spiel.");
+                } else {
+                    updateStatus("Bitte warte auf den ersten Zug deines Mitspielers, du bist gleich dran.");
+                }
+
 		        if (firstplayer == true){
 		            swal({
                         title: "Are you sure?",

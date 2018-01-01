@@ -47,7 +47,7 @@ public class GridObserver implements IObserver {
 		    String change = String.format("%s ist am Zug", controller.aktiverSpieler().getName());
 		    out.write(change);
 		} else if (e instanceof GameOverEvent) {
-			String gameOver = String.format("Game Over! Winner is: %s%n!%n", controller.aktiverSpieler().getName());
+			String gameOver = String.format("Game Over! %s hat gewonnen!%n", controller.inAktiverSpieler().getName());
 			out.write(gameOver);
 		} //else if (e instanceof PlayerCreateEvent){
 		    // Possibility to react}
@@ -58,7 +58,7 @@ public class GridObserver implements IObserver {
 		} else if (e instanceof GameStartEvent){
 		    out.write("Starte das Spiel");
 		} else if (e instanceof FullSessionEvent){
-		    String sessionFull = String.format("Das Spiel ist momentan nur für ein Spiel optimiert.%n Dieses Spiel läuft bereits. %n Versuchen Sie es später nocheinmal");
+		    String sessionFull = String.format("Es läuft bereits ein Spiel.%n Versuchen Sie es später noch einmal.");
 		    out.write(sessionFull);
 		}
     }
