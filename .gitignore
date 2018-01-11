@@ -19,3 +19,5 @@ dist
 /RUNNING_PID
 /.settings
 /project/*-shim.sbt
+build.sbt
+project/.sbtserver
