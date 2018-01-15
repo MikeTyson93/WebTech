@@ -6,9 +6,9 @@ import java.util.List;
 import models.UserInfoDB;
 
 /**
- * Backing class for the login form.
+ * Backing class for the sign up form.
  */
-public class LoginFormData {
+public class SignUpFormData {
 
   /** The submitted email. */
   public String email = "";
@@ -19,29 +19,18 @@ public class LoginFormData {
   public boolean hasGlobalErrors = false;
 
   /** Required for form instantiation. */
-  public LoginFormData() {
+  public SignUpFormData() {
   }
 
   /**
-   * Validates Form<LoginFormData>.
+   * Validates Form<SignUpFormData>.
    * Called automatically in the controller by bindFromRequest().
    * Checks to see that email and password are valid credentials.
    * @return Null if valid, or a List[ValidationError] if problems found.
    */
   public List<ValidationError> validate() {
 
-    List<ValidationError> errors = new ArrayList<>();
-    
-    if (!UserInfoDB.isValid(email, password)) {
-      errors.add(new ValidationError("email", ""));
-      errors.add(new ValidationError("password", ""));      
-    }
-
-    if (errors.size() > 0){
-        GlobalError = errors.get(0);
-        hasGlobalErrors = true;
-    }
-    return (errors.size() > 0) ? errors : null;
+    return null;
   }
   
   public ValidationError GlobalError(){

@@ -1,0 +1,9 @@
+@(page: String, signup: Form[views.formdata.SignUpFormData])
+
+@import signupform._
+
+@signupmain(page) {
+   <div class="container">
+     @signupform(routes.Application.postsignup(), signup("email"), signup("password"))
+   </div>
+}
