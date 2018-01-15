@@ -49,7 +49,7 @@ public class Application extends Controller {
 			zwei = controller.getPlayerTwo();
 			//Gui graphicUi = new Gui(FourWinning.controller);
 			//textui.createGameArea();
-			return ok(views.html.fourwinning.render("Spielfeld gebaut", Secured.isLoggedIn(ctx()), Secured.getUserInfo(ctx())));
+			return ok(views.html.fourwinning.render("Spielfeld gebaut"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -64,12 +64,12 @@ public class Application extends Controller {
 	    String zugerfolgreich = (controller.zug(currentColumn, aktiv));
 	    spielfeld = controller.update();
 	    if(controller.spielGewonnen(spielfeld, aktiv))
-	        return ok(views.html.fourwinning.render("Fourwinning", Secured.isLoggedIn(ctx()), Secured.getUserInfo(ctx())));
+	        return ok(views.html.fourwinning.render("Fourwinning"));
 	    
 	    controller.notifyObservers(null);
     	    //controller.changePlayer(eins, zwei);
     	    //controller.notifyObservers(new PlayerChangeEvent());
-		return ok(views.html.fourwinning.render("Fourwinning", Secured.isLoggedIn(ctx()), Secured.getUserInfo(ctx())));
+		return ok(views.html.fourwinning.render("Fourwinning"));
 	
     }
     
@@ -79,7 +79,7 @@ public class Application extends Controller {
             one.setName(name);
             controller.notifyObservers(new PlayerCreateEvent());
             controller.notifyObservers(new WaitForPlayerEvent());
-            return ok(views.html.fourwinning.render("Fourwinning", Secured.isLoggedIn(ctx()), Secured.getUserInfo(ctx())));
+            return ok(views.html.fourwinning.render("Fourwinning"));
         }
         
         Player two = controller.getPlayerTwo();
@@ -87,11 +87,11 @@ public class Application extends Controller {
             two.setName(name);
             controller.notifyObservers(new PlayerCreateEvent());
             controller.notifyObservers(new GameStartEvent());
-            return ok(views.html.fourwinning.render("Fourwinning", Secured.isLoggedIn(ctx()), Secured.getUserInfo(ctx())));
+            return ok(views.html.fourwinning.render("Fourwinning"));
         } else {
             // Both players are created -> Session is full!
             controller.notifyObservers(new FullSessionEvent());
-            return ok(views.html.fourwinning.render("Fourwinning", Secured.isLoggedIn(ctx()), Secured.getUserInfo(ctx())));
+            return ok(views.html.fourwinning.render("Fourwinning"));
         }
         
     }

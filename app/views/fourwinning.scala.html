@@ -1,4 +1,4 @@
-@(game: String, isLoggedIn: Boolean, userInfo: UserInfo)
+@(game: String)
 
 @main("Welcome to Four Winning"){
 <html lang="en">
@@ -20,14 +20,7 @@
         <li class="active"><a href="http://localhost:9000/fourwinning/">Vier gewinnt</a></li>
         <li><a href="http://localhost:9000/contact/">Kontakt</a></li>
       </ul>
-       <ul class="nav navbar-nav navbar-right">
-          @if(isLoggedIn) {
-            <li><p class="navbar-text">@userInfo.getEmail()</p></li>
-            <li><a href="@routes.Application.logout()">Logout</a></li>
-          } else {
-            <li><a href="@routes.Application.login()">Login</a></li>
-          }
-      </ul>
+       
     </div>
   </div>
 </nav>
