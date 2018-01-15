@@ -1,0 +1,9 @@
+@(page: String, isLoggedIn: Boolean, userInfo: UserInfo, loginForm: Form[views.formdata.LoginFormData])
+
+@import loginform._
+
+@loginmain(page, isLoggedIn, userInfo) {
+   <div class="container">
+     @loginform(routes.Application.postLogin(), loginForm("email"), loginForm("password"))
+   </div>
+}

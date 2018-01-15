@@ -19,6 +19,13 @@ import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.WebSocket;
 
+import play.data.Form;
+import play.mvc.Controller;
+import play.mvc.Result;
+import views.html.login;
+import views.formdata.LoginFormData;
+import play.mvc.Security;
+
 public class Application extends Controller {
     
     static IGameController controller;
@@ -31,7 +38,7 @@ public class Application extends Controller {
     static boolean firstThrow = false;
     
     public static Result index() {
-        return ok(views.html.index.render("Hello Play Framework"));
+        return ok(views.html.index.render("Hello Play Framework", Secured.isLoggedIn(ctx()), Secured.getUserInfo(ctx())));
     }
     
     public static Result fourwinning() {
@@ -42,7 +49,7 @@ public class Application extends Controller {
 			zwei = controller.getPlayerTwo();
 			//Gui graphicUi = new Gui(FourWinning.controller);
 			//textui.createGameArea();
-			return ok(views.html.fourwinning.render("Spielfeld gebaut"));
+			return ok(views.html.fourwinning.render("Spielfeld gebaut", Secured.isLoggedIn(ctx()), Secured.getUserInfo(ctx())));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -51,21 +58,18 @@ public class Application extends Controller {
     }
     
     public static Result playfourwinning(String command) {
-    	    
-    	    spielfeld = controller.update();
-    	    aktiv = controller.aktiverSpieler();
-    	    int currentColumn = Integer.parseInt(command);
-    	    String zugerfolgreich = (controller.zug(currentColumn, aktiv));
-    	    spielfeld = controller.update();
-    	    if(controller.spielGewonnen(spielfeld, aktiv))
-    	        return ok(views.html.fourwinning.render("Fourwinning"));
-    	    
-    	    controller.notifyObservers(null);
+	    spielfeld = controller.update();
+	    aktiv = controller.aktiverSpieler();
+	    int currentColumn = Integer.parseInt(command);
+	    String zugerfolgreich = (controller.zug(currentColumn, aktiv));
+	    spielfeld = controller.update();
+	    if(controller.spielGewonnen(spielfeld, aktiv))
+	        return ok(views.html.fourwinning.render("Fourwinning", Secured.isLoggedIn(ctx()), Secured.getUserInfo(ctx())));
+	    
+	    controller.notifyObservers(null);
     	    //controller.changePlayer(eins, zwei);
     	    //controller.notifyObservers(new PlayerChangeEvent());
-    	    
-    	    
-			return ok(views.html.fourwinning.render("Fourwinning"));
+		return ok(views.html.fourwinning.render("Fourwinning", Secured.isLoggedIn(ctx()), Secured.getUserInfo(ctx())));
 	
     }
     
@@ -75,7 +79,7 @@ public class Application extends Controller {
             one.setName(name);
             controller.notifyObservers(new PlayerCreateEvent());
             controller.notifyObservers(new WaitForPlayerEvent());
-            return ok(views.html.fourwinning.render("Fourwinning"));
+            return ok(views.html.fourwinning.render("Fourwinning", Secured.isLoggedIn(ctx()), Secured.getUserInfo(ctx())));
         }
         
         Player two = controller.getPlayerTwo();
@@ -83,22 +87,24 @@ public class Application extends Controller {
             two.setName(name);
             controller.notifyObservers(new PlayerCreateEvent());
             controller.notifyObservers(new GameStartEvent());
-            return ok(views.html.fourwinning.render("Fourwinning"));
+            return ok(views.html.fourwinning.render("Fourwinning", Secured.isLoggedIn(ctx()), Secured.getUserInfo(ctx())));
         } else {
             // Both players are created -> Session is full!
             controller.notifyObservers(new FullSessionEvent());
-            return ok(views.html.fourwinning.render("Fourwinning"));
+            return ok(views.html.fourwinning.render("Fourwinning", Secured.isLoggedIn(ctx()), Secured.getUserInfo(ctx())));
         }
         
     }
     
+    @Security.Authenticated(Secured.class)
     public static Result strategie(){
-        return ok(views.html.strategie.render("Strategie"));
+        return ok(views.html.strategie.render("Strategie", Secured.isLoggedIn(ctx()), Secured.getUserInfo(ctx())));
     
     }
     
+    @Security.Authenticated(Secured.class)
     public static Result contact(){
-        return ok(views.html.contact.render("Kontakte"));
+        return ok(views.html.contact.render("Kontakte",  Secured.isLoggedIn(ctx()), Secured.getUserInfo(ctx())));
     }
     
     public static WebSocket<String> connectWebSocket() {
@@ -110,20 +116,35 @@ public class Application extends Controller {
             
         };
     }
-    /*
-    public static void setnameofplayer1(String name){
-        // TODO: Save the name into the fourwinning module for the first player
-        game.setPlayerNameOne(name);
-    }
     
-    public static void setnameofplayer2(String name){
-        // TODO: Save the name into the fourwinning module for the first player 
-        game.setPlayerNameTwo(name);
-        try{
-            game.startGame();
-        } catch (java.io.IOException e) {
-            e.printStackTrace();   
-           
+    public static Result login() {
+        Form<LoginFormData> formData = Form.form(LoginFormData.class);
+        return ok(login.render("Login", Secured.isLoggedIn(ctx()), Secured.getUserInfo(ctx()), formData));
+    }
+
+    
+    public static Result postLogin() {
+
+        // Get the submitted form data from the request object, and run validation.
+        Form<LoginFormData> formData = Form.form(LoginFormData.class).bindFromRequest();
+
+        if (formData.hasErrors()) {
+            flash("error", "Login credentials not valid.");
+            return badRequest(login.render("Login", Secured.isLoggedIn(ctx()), Secured.getUserInfo(ctx()), formData));
         }
-    }*/
+        else {
+            // email/password OK, so now we set the session variable and only go to authenticated pages.
+            session().clear();
+            session("email", formData.get().email);
+            return redirect(routes.Application.index());
+        }
+    }
+ 
+  
+    @Security.Authenticated(Secured.class)
+    public static Result logout() {
+        session().clear();
+        return redirect(routes.Application.index());
+    }
 }
+
