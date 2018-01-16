@@ -9,6 +9,8 @@ var playername = "";
 var active = "";
 var firstplayer = false;
 
+
+
 $(function() {
     // add a click handler to the button
     $("#getMessageButton").click(function(event) {
@@ -22,98 +24,93 @@ $(function() {
     })
 })
 
-$(function() {  
+// run on start
+$(function (){
+    socket = new WebSocket("ws://localhost:9000/socket");
 
-	connect();  
+    message('Socket Status: '+socket.readyState + ' (ready)');
 
-	function connect(){       
-		socket = new WebSocket("ws://localhost:9000/socket");
+    socket.onopen = function(){  message('Socket Status: '+socket.readyState+' (open)');  }  ;
 
-		message('Socket Status: '+socket.readyState + ' (ready)');  
+    socket.onmessage = function(msg){
 
-		socket.onopen = function(){  message('Socket Status: '+socket.readyState+' (open)');  }  ;
 
-		socket.onmessage = function(msg){
+        if (playtrigger === 1){
+            return;
+        }
 
-		    if (playtrigger === 1){
-		        return;
-		    }
+        var datastring = String(msg.data);
+        //console.log(msg.data);
+        if (datastring.startsWith("Game Over!")){
+            swal(msg.data);
+        } else if (datastring.startsWith("Draw")){
+            swal(msg.data);
+        } else if (datastring.startsWith("Spieler")){           // passiert wenn aktiver Spieler Zug macht
+            active = msg.data.split(" ")[1];
+            console.log(active);
+            //swal(msg.data);
+            if (playername == active){
+                vue.message = "Du bist dran.";
+            } else {
+                vue.message = msg.data;
+            }
+        } else if (datastring.startsWith("Warten")){
+            active = playername;
+            firstplayer = true;
+            swal(msg.data);
+        } else if (datastring.startsWith("Das Spiel")){         // 3. Spieler möchte joinen (geht nicht)
+            playtrigger = 1;
+            swal(msg.data);
+        } else if (datastring.startsWith("Starte")){            // GameStartEvent: Spiel beginnt nach Namen Eingabe
+            swal.close();
+            buildGame();
 
-		    var datastring = String(msg.data);
-		    //console.log(msg.data);
-		    if (datastring.startsWith("Game Over!")){
-		        swal(msg.data);
-		    } else if (datastring.startsWith("Draw")){
-		        swal(msg.data);
-		    } else if (datastring.startsWith("Spieler")){           // passiert wenn aktiver Spieler Zug macht
-		        active = msg.data.split(" ")[1];
-		        console.log(active);
-		        //swal(msg.data);
-	            if (playername == active){
-	                updateStatus("Du bist dran.");
-	            } else {
-	                updateStatus(msg.data);
-	            }
-		    } else if (datastring.startsWith("Warten")){
-		        active = playername;
-		        firstplayer = true;
-		        swal(msg.data);
-		    } else if (datastring.startsWith("Das Spiel")){         // 3. Spieler möchte joinen (geht nicht)
-		        playtrigger = 1;
-		        swal(msg.data);
-		    } else if (datastring.startsWith("Starte")){            // GameStartEvent: Spiel beginnt nach Namen Eingabe
-		        swal.close();
-		        buildGame();
+            if (playername == active){
+                vue.message = "Du beginnst das Spiel.";
+            } else {
+                vue.message = "Bitte warte auf den ersten Zug deines Mitspielers, du bist gleich dran.";
+            }
 
-                if (playername == active){
-                    updateStatus("Du beginnst das Spiel.");
-                } else {
-                    updateStatus("Bitte warte auf den ersten Zug deines Mitspielers, du bist gleich dran.");
+            if (firstplayer == true){
+                swal({
+                    title: "Are you sure?",
+                    text: "Sie sind an der Reihe!",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Yes, delete it!"
+                }, function(){
+                  console.log("Now we run the next line of code!"); });
+            } else {
+                swal({
+                    title: "Are you sure?",
+                    text: "Ihr Gegner ist an der Reihe!",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Yes, delete it!"
+                }, function(){
+                  console.log("No we run the next line of code!"); });
                 }
+        } else {
+        var gamefield = JSON.parse(msg.data);
+        buildNewGameField(gamefield);
+        }
 
-		        if (firstplayer == true){
-		            swal({
-                        title: "Are you sure?",
-                        text: "Sie sind an der Reihe!",
-                        type: "warning",
-                        showCancelButton: true,
-                        confirmButtonColor: "#DD6B55",
-                        confirmButtonText: "Yes, delete it!"
-                    }, function(){
-                      console.log("Now we run the next line of code!"); });
-                } else {
-                    swal({
-                        title: "Are you sure?",
-                        text: "Ihr Gegner ist an der Reihe!",
-                        type: "warning",
-                        showCancelButton: true,
-                        confirmButtonColor: "#DD6B55",
-                        confirmButtonText: "Yes, delete it!"
-                    }, function(){
-                      console.log("No we run the next line of code!"); });
-                    }
-		    } else {
-    		var gamefield = JSON.parse(msg.data);
-	    	buildNewGameField(gamefield);
-		    }
-		        
-		};
-		socket.onclose = function(){ message('Socket Status: '+socket.readyState+' (Closed)');  }  ;          
-
-		
-
-		function message(msg){  
-			$('#wsLog').append('<p>' + msg +'</p>');  
-		}  
+    };
+    socket.onclose = function(){ message('Socket Status: '+socket.readyState+' (Closed)');  }  ;
 
 
-	}//End connect  
+
+    function message(msg){
+        $('#wsLog').append('<p>' + msg +'</p>');
+    }
 });
 
 function send(col){
     // Check if it is the turn of the player
     if (playername != active){
-        updateStatus("Bitte warten - Spieler \"" + active + "\" ist an der Reihe.");
+        vue.message = "Bitte warten - Spieler \"" + active + "\" ist an der Reihe.";
         //swal("Sie sind momentan nicht an der Reihe.");
         return;
     }
@@ -191,8 +188,4 @@ function sendPlayerName(name){
             console.log(socket.readyState);
         }
     } else console.log("Error: 'socket' not defined yet");
-}
-
-function updateStatus(txt) {
-    document.getElementById('status_div').innerHTML = txt;
 }
