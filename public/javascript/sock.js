@@ -10,19 +10,6 @@ var active = "";
 var firstplayer = false;
 
 
-var status_vue = new Vue({
-			el: '#vue_status_div',
-			data: {
-				message: 'Hello Vue JS'
-			},
-			watch: {
-			    message: function(val) {
-			        this.message = val;
-			    }
-			}
-		});
-
-
 
 $(function() {
     // add a click handler to the button
@@ -39,10 +26,6 @@ $(function() {
 
 // run on start
 $(function (){
-
-    updateStatus("test 123");
-
-/*
     socket = new WebSocket("ws://localhost:9000/socket");
 
     message('Socket Status: '+socket.readyState + ' (ready)');
@@ -50,6 +33,7 @@ $(function (){
     socket.onopen = function(){  message('Socket Status: '+socket.readyState+' (open)');  }  ;
 
     socket.onmessage = function(msg){
+
 
         if (playtrigger === 1){
             return;
@@ -66,9 +50,9 @@ $(function (){
             console.log(active);
             //swal(msg.data);
             if (playername == active){
-                updateStatus("Du bist dran.");
+                vue.message = "Du bist dran.";
             } else {
-                updateStatus(msg.data);
+                vue.message = msg.data;
             }
         } else if (datastring.startsWith("Warten")){
             active = playername;
@@ -82,9 +66,9 @@ $(function (){
             buildGame();
 
             if (playername == active){
-                updateStatus("Du beginnst das Spiel.");
+                vue.message = "Du beginnst das Spiel.";
             } else {
-                updateStatus("Bitte warte auf den ersten Zug deines Mitspielers, du bist gleich dran.");
+                vue.message = "Bitte warte auf den ersten Zug deines Mitspielers, du bist gleich dran.";
             }
 
             if (firstplayer == true){
@@ -121,13 +105,12 @@ $(function (){
     function message(msg){
         $('#wsLog').append('<p>' + msg +'</p>');
     }
-    */
 });
 
 function send(col){
     // Check if it is the turn of the player
     if (playername != active){
-        updateStatus("Bitte warten - Spieler \"" + active + "\" ist an der Reihe.");
+        vue.message = "Bitte warten - Spieler \"" + active + "\" ist an der Reihe.";
         //swal("Sie sind momentan nicht an der Reihe.");
         return;
     }
@@ -205,12 +188,4 @@ function sendPlayerName(name){
             console.log(socket.readyState);
         }
     } else console.log("Error: 'socket' not defined yet");
-}
-
-function updateStatus(txt) {
-    console.log("sock.js: updateStatus (for vue) called")
-    console.log("status_vue: " + status_vue);
-    Vue.set(status_vue, 'message', txt);
-    status_vue.StatusText = txt;
-    this.$forceUpdate()
 }
