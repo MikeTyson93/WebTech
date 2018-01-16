@@ -7,7 +7,7 @@ GET     /strategie/                 controllers.Application.strategie()
 GET     /contact/                  controllers.Application.contact()
 
 # Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file               controllers.Assets.at(path="/public", file)
+GET     /assets/*file                controllers.Assets.at(path="/public", file)
 GET     /webjars/*file              controllers.WebJarAssets.at(file)
 GET 	/fourwinning/				controllers.Application.fourwinning()
 GET 	/fourwinning/:command		controllers.Application.playfourwinning(command)
@@ -19,3 +19,9 @@ GET     /signup/                    controllers.Application.signupForm()
 POST    /signup/                    @controllers.Application.postsignup()
 GET     /openID/auth/               controllers.Application.auth()
 GET     /openID/verify/             @controllers.Application.verify()
+GET     /public/javascripts/signupajax  controllers.Application.javascriptRoutes()
+
+GET     /public/javascripts/routes          controllers.Application.javascriptRoutes()
+
+GET     /public/javascripts/signupajax          controllers.Application.javascriptRoutes()
+# Map static resources from the /public folder to the /assets URL path

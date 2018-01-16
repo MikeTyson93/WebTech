@@ -15,7 +15,7 @@
         <h3 class="panel-title">Please sign up</h3>
       </div>
       <div class="panel-body">
-        @helper.form(reverseRoute, 'role -> "form") {
+        @helper.form(reverseRoute, 'id -> "createUserForm") {
           <fieldset>
             <div class="form-group @if(emailField.hasErrors) {has-error}" >
               <input id="@emailField.id" name="@emailField.name" value="@emailField.value.getOrElse("")" class="form-control" placeholder="E-mail" type="text">
@@ -24,8 +24,7 @@
               <input id="@passwordField.id" name="@passwordField.name" value="@passwordField.value.getOrElse("")" class="form-control" placeholder="Password" type="password">
             </div>
             <div>
-            <input class="btn btn-lg btn-success btn-block" type="submit" value="Sign up">
-                
+            <button id="createUserBtn" type="button" class="btn btn-success" style="width:100%; margin-top:20px;">Sign Up</button>
             </div>
               
           </fieldset>

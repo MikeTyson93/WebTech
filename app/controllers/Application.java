@@ -20,7 +20,9 @@ import models.UserInfo;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.WebSocket;
-
+import play.*;
+import play.mvc.*;
+ 
 import play.data.Form;
 import play.mvc.Controller;
 import java.util.*;
@@ -223,6 +225,12 @@ public class Application extends Controller {
                 routes.Application.index()
         );
     }
+    
+    public static Result javascriptRoutes() {       
+        response().setContentType("text/javascript");
+        return ok(Routes.javascriptRouter("jsRoutes", controllers.routes.javascript.Application.postsignup()
+        ));
+    }   
 }
 
 
