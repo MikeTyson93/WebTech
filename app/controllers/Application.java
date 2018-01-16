@@ -197,9 +197,10 @@ public class Application extends Controller {
         Form<SignUpFormData> loginform = Form.form(SignUpFormData.class).bindFromRequest();
         String email = loginform.get().email;
         String password = loginform.get().password;
-        System.out.println("Email: " + email);
         UserInfoDB.addUserInfo("", email, password);
-        return redirect(routes.Application.login());
+        return redirect(
+                routes.Application.index()
+        );
     }
     
     public static Result auth() {

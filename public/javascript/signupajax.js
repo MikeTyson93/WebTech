@@ -3,9 +3,9 @@ $(document).on("click", "#createUserBtn", function() {
         type: "POST",
         data: $("#createUserForm").serialize(),
          success: function(response) {
-            if(response === "no_errors"){
-                console.log(response);
-            } 
+            console.log(response);
+            alert("You will now be redirected.");
+            window.location = "http://localhost:9000/login/";
              
          },
         error: function(response) {
